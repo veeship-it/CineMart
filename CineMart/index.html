@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMart | Your Vision. Our Equipment.</title>
+    <meta name="description" content="Shop professional cinematography cameras, lenses, lighting and accessories at CineMart. Premium gear for filmmakers and visual storytellers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="announcement-bar">
+        FREE NATIONWIDE SHIPPING ON ORDERS OVER ₦100,000 &nbsp;·&nbsp; CINEMART EXCLUSIVE COLLECTION NOW LIVE
+    </div>
+
+    <header class="header" id="main-header">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🎞️</span>
+            <div>
+                <span class="logo-wordmark">CINE<span class="brand-gradient">MART</span></span>
+                <span class="logo-tagline">YOUR VISION. OUR EQUIPMENT.</span>
+            </div>
+        </a>
+
+        <nav class="navbar" id="navbar">
+            <a href="index.html" class="active">Home</a>
+            <a href="product.html">Shop</a>
+            <a href="#categories">Categories</a>
+            <a href="girlcinemart.html" class="girl-link">GirlCineMart ♡</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-button" aria-label="Search" onclick="window.location.href='product.html'">⌕</button>
+            <a href="login.html" class="account-link">Account</a>
+            <a href="cart.html" class="cart-link" aria-label="View cart">
+                Cart <span id="cart-count">0</span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================
+             HERO — EXACT REFERENCE REPLICATION (CAPTURE WHAT MATTERS)
+        ============================================ -->
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-eyebrow-text">PREMIUM CAMERAS &amp; ACCESSORIES</p>
+
+                <h1>
+                    CAPTURE
+                    <span class="hero-gold-text">WHAT MATTERS</span>
+                </h1>
+
+                <p class="hero-description">
+                    Professional cameras, lenses and accessories for creators, dreamers and storytellers. Bring your vision to life with CineMart.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="product.html" class="button">SHOP NOW &rarr;</a>
+                    <a href="#categories" class="button button-outline">EXPLORE GEAR</a>
+                </div>
+
+                <div class="hero-indicator-row">
+                    <span class="hero-slider-bar active"></span>
+                    <span class="hero-slider-bar track"></span>
+                </div>
+
+                <div class="hero-trust-bullets">
+                    <span class="hero-bullet-dot">●</span> PREMIUM QUALITY &nbsp;&nbsp;&bull;&nbsp;&nbsp; AUTHENTIC PRODUCTS &nbsp;&nbsp;&bull;&nbsp;&nbsp; FAST DELIVERY
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="hero-stage-backdrop"></div>
+                <div class="hero-image-stage">
+                    <img src="./images/camera.png.png" alt="Canon Cinema EOS 8K Camera" class="hero-camera-hero" loading="eager">
+                    <div class="hero-stage-pedestal"></div>
+                    <div class="hero-camera-spec-pill" aria-label="Camera specifications">
+                        <span class="gold-highlight">8K SUPER35</span>
+                        <span class="sep">/</span>
+                        <span>16+ STOPS DYNAMIC RANGE</span>
+                        <span class="sep">/</span>
+                        <span>CINEMA RAW</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             FLOATING TRUST BAR (MATCHES REFERENCE IMAGE)
+        ============================================ -->
+        <section class="trust-bar-section">
+            <div class="trust-bar-card">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <div class="trust-text">
+                        <h4>FREE SHIPPING</h4>
+                        <p>On orders over $50</p>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="trust-text">
+                        <h4>SECURE PAYMENT</h4>
+                        <p>100% safe &amp; trusted</p>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                        </svg>
+                    </div>
+                    <div class="trust-text">
+                        <h4>24/7 SUPPORT</h4>
+                        <p>We're here to help</p>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="trust-text">
+                        <h4>PREMIUM BRANDS</h4>
+                        <p>Top names you love</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SHOP BY CATEGORY
+        ============================================ -->
+        <section class="section categories-section" id="categories">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">FIND YOUR EQUIPMENT</p>
+                    <h2>Shop by category<span>.</span></h2>
+                </div>
+                <a href="product.html" class="text-link">Explore all →</a>
+            </div>
+
+            <div class="category-grid">
+                <a href="product.html?category=CAMERAS" class="category-card animate-on-scroll">
+                    <img src="./images/cam2.png.jpg" alt="Cinema Cameras" loading="lazy">
+                    <div class="category-overlay">
+                        <span>01 / CAPTURE</span>
+                        <h3>Cinema Cameras</h3>
+                        <p>Explore cameras →</p>
+                    </div>
+                </a>
+
+                <a href="product.html?category=LENSES" class="category-card animate-on-scroll">
+                    <img src="./images/cam1.png.jpg" alt="Camera Lenses" loading="lazy">
+                    <div class="category-overlay">
+                        <span>02 / FOCUS</span>
+                        <h3>Lenses &amp; Optics</h3>
+                        <p>Explore lenses →</p>
+                    </div>
+                </a>
+
+                <a href="product.html?category=ACCESSORIES" class="category-card animate-on-scroll">
+                    <img src="./images/cam4.png.jpg" alt="Camera Accessories" loading="lazy">
+                    <div class="category-overlay">
+                        <span>03 / STABILISE</span>
+                        <h3>Rigs &amp; Accessories</h3>
+                        <p>Explore accessories →</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================================
+             FEATURED PRODUCTS (MATCHES REFERENCE IMAGE)
+        ============================================ -->
+        <section class="section products-section" id="shop">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow eyebrow-gold">FEATURED PRODUCTS</p>
+                    <h2>Top Picks for Creators</h2>
+                </div>
+                <a href="product.html" class="text-link">View All &rarr;</a>
+            </div>
+
+            <div class="product-grid">
+
+                <article class="product-card animate-on-scroll" data-product-id="cinemart-alpha-fx">
+                    <div class="product-image">
+                        <span class="product-badge">BESTSELLER</span>
+                        <a href="product.html?id=cinemart-alpha-fx">
+                            <img src="./images/cam1.png.jpg" alt="Sony FX3 Full-Frame Cinema Camera" loading="lazy">
+                        </a>
+                        <button class="wishlist-button" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">CAMERAS</p>
+                        <h3><a href="product.html?id=cinemart-alpha-fx">Sony FX3 Full-Frame Cinema Camera</a></h3>
+                        <p class="product-description">Compact full-frame 4K 120p with 15+ stops dynamic range and active cooling.</p>
+                        <div class="product-bottom">
+                            <span class="price">₦3,850,000</span>
+                            <button class="add-button" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card animate-on-scroll" data-product-id="cinemart-creator-cam">
+                    <div class="product-image">
+                        <span class="product-badge">FEATURED</span>
+                        <a href="product.html?id=cinemart-creator-cam">
+                            <img src="./images/cam3.png.jpg" alt="CineMart Digital Creator 4K Camera" loading="lazy">
+                        </a>
+                        <button class="wishlist-button" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">CAMERAS</p>
+                        <h3><a href="product.html?id=cinemart-creator-cam">CineMart Digital Creator 4K Camera</a></h3>
+                        <p class="product-description">All-in-one filmmaking powerhouse with 4K recording and real-time Eye AF.</p>
+                        <div class="product-bottom">
+                            <span class="price">₦1,450,000</span>
+                            <button class="add-button" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card animate-on-scroll" data-product-id="cinemart-prime-lens">
+                    <div class="product-image">
+                        <span class="product-badge new-badge">NEW</span>
+                        <a href="product.html?id=cinemart-prime-lens">
+                            <img src="./images/cam2.png.jpg" alt="Master Cine 50mm T1.3 Prime Lens" loading="lazy">
+                        </a>
+                        <button class="wishlist-button" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">LENSES</p>
+                        <h3><a href="product.html?id=cinemart-prime-lens">Master Cine 50mm T1.3 Prime Lens</a></h3>
+                        <p class="product-description">Ultra-fast T1.3 cinema prime delivering creamy bokeh and zero focus breathing.</p>
+                        <div class="product-bottom">
+                            <span class="price">₦980,000</span>
+                            <button class="add-button" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card animate-on-scroll" data-product-id="cinemart-studio-rig">
+                    <div class="product-image">
+                        <span class="product-badge">CINEMA PRO</span>
+                        <a href="product.html?id=cinemart-studio-rig">
+                            <img src="./images/cam4.png.jpg" alt="RED Dragon 6K Studio Cinema Rig" loading="lazy">
+                        </a>
+                        <button class="wishlist-button" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">CAMERAS</p>
+                        <h3><a href="product.html?id=cinemart-studio-rig">RED Dragon 6K Studio Cinema Rig</a></h3>
+                        <p class="product-description">Hollywood 6K Super35 package with modular cage, handle, and SDI monitor.</p>
+                        <div class="product-bottom">
+                            <span class="price">₦6,800,000</span>
+                            <button class="add-button" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card animate-on-scroll" data-product-id="cinemart-street-compact">
+                    <div class="product-image">
+                        <span class="product-badge">POPULAR</span>
+                        <a href="product.html?id=cinemart-street-compact">
+                            <img src="./images/cam5.png.jpg" alt="Lumix S5 IIX Blackout Cinema Body" loading="lazy">
+                        </a>
+                        <button class="wishlist-button" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">CAMERAS</p>
+                        <h3><a href="product.html?id=cinemart-street-compact">Lumix S5 IIX Blackout Cinema Body</a></h3>
+                        <p class="product-description">Full-frame hybrid with 6K ProRes RAW recording directly to external SSD.</p>
+                        <div class="product-bottom">
+                            <span class="price">₦2,450,000</span>
+                            <button class="add-button" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card animate-on-scroll" data-product-id="cinemart-broadcast-8k">
+                    <div class="product-image">
+                        <span class="product-badge">FLAGSHIP</span>
+                        <a href="product.html?id=cinemart-broadcast-8k">
+                            <img src="./images/cam6.png.jpg" alt="URSA Mini Pro 12K Digital Cinema" loading="lazy">
+                        </a>
+                        <button class="wishlist-button" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">CAMERAS</p>
+                        <h3><a href="product.html?id=cinemart-broadcast-8k">URSA Mini Pro 12K Digital Cinema</a></h3>
+                        <p class="product-description">Revolutionary 12K Super35 sensor with Blackmagic RAW and motorized ND filters.</p>
+                        <div class="product-bottom">
+                            <span class="price">₦7,500,000</span>
+                            <button class="add-button" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card animate-on-scroll" data-product-id="cinemart-rig-stabilizer">
+                    <div class="product-image">
+                        <span class="product-badge">ACCESSORY</span>
+                        <a href="product.html?id=cinemart-rig-stabilizer">
+                            <img src="./images/cam9.png.jpg" alt="Pro Carbon Fiber Gimbal &amp; Matte Box Rig" loading="lazy">
+                        </a>
+                        <button class="wishlist-button" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">ACCESSORIES</p>
+                        <h3><a href="product.html?id=cinemart-rig-stabilizer">Pro Carbon Fiber Gimbal &amp; Matte Box Rig</a></h3>
+                        <p class="product-description">Complete stabilizing system with carbon fiber dual handles and swing-away matte box.</p>
+                        <div class="product-bottom">
+                            <span class="price">₦850,000</span>
+                            <button class="add-button" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card animate-on-scroll" data-product-id="cinemart-girl-edition">
+                    <div class="product-image">
+                        <span class="product-badge new-badge">GIRLCINEMART ♡</span>
+                        <a href="product.html?id=cinemart-girl-edition">
+                            <img src="./images/girl.cam.png.jpg" alt="GirlCineMart Rose Quartz Creator Camera" loading="lazy">
+                        </a>
+                        <button class="wishlist-button" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">GIRLCINEMART</p>
+                        <h3><a href="product.html?id=cinemart-girl-edition">GirlCineMart Rose Quartz Creator Camera</a></h3>
+                        <p class="product-description">Exclusive pastel blush edition with golden accents and 4K selfie screen.</p>
+                        <div class="product-bottom">
+                            <span class="price">₦1,650,000</span>
+                            <button class="add-button" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="demo-notice">
+                All equipment is certified authentic with official 1-Year CineMart warranty and insured nationwide dispatch.
+            </p>
+        </section>
+
+        <!-- ============================================
+             GIRLCINEMART EDITORIAL
+        ============================================ -->
+        <section class="girl-section" id="girlcinemart">
+            <div class="girl-content">
+                <p class="eyebrow">A COLOURFUL WORLD OF CREATIVITY</p>
+                <h2>Meet <span>GirlCineMart.</span></h2>
+                <p class="girl-description">
+                    Who says creative equipment has to look the same? Explore colourful gear, expressive accessories, and equipment that lets your personality shine through every frame.
+                </p>
+
+                <div class="colour-options" aria-label="Featured colours">
+                    <span class="colour colour-pink" title="Pink"></span>
+                    <span class="colour colour-purple" title="Purple"></span>
+                    <span class="colour colour-blue" title="Blue"></span>
+                    <span class="colour colour-green" title="Green"></span>
+                    <span class="colour colour-red" title="Red"></span>
+                    <span class="colour colour-yellow" title="Yellow"></span>
+                    <span class="colour colour-white" title="White"></span>
+                </div>
+
+                <p class="colour-note">More colours. More personality. More creativity.</p>
+                <a href="girlcinemart.html" class="button button-outline">Explore Dedicated Collection &rarr;</a>
+            </div>
+
+            <div class="girl-image">
+                <img src="./images/girl.cam.png.jpg" alt="GirlCineMart creative camera equipment" loading="lazy">
+                <div class="girl-image-label">
+                    <span>COLOUR YOUR CREATIVITY</span>
+                    <strong>Your gear, your style.</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             COLOUR COLLECTIONS
+        ============================================ -->
+        <section class="section colour-section" id="colour-products">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">FIND YOUR SHADE</p>
+                    <h2>Creativity in every colour<span>.</span></h2>
+                </div>
+            </div>
+
+            <p class="colour-intro">
+                From subtle neutrals to expressive colours, discover equipment and accessories that suit your creative style and personality.
+            </p>
+
+            <div class="colour-grid">
+                <a href="product.html?category=GIRLCINEMART" class="colour-card pink-card animate-on-scroll">
+                    <div class="colour-card-circle">01</div>
+                    <h3>Pretty in Pink</h3>
+                    <p>Soft, bold, and beautiful.</p>
+                    <span>Explore pink →</span>
+                </a>
+                <a href="product.html?category=GIRLCINEMART" class="colour-card purple-card animate-on-scroll">
+                    <div class="colour-card-circle">02</div>
+                    <h3>Power in Purple</h3>
+                    <p>Expressive and distinctive.</p>
+                    <span>Explore purple →</span>
+                </a>
+                <a href="product.html?category=GIRLCINEMART" class="colour-card blue-card animate-on-scroll">
+                    <div class="colour-card-circle">03</div>
+                    <h3>Beyond Blue</h3>
+                    <p>Cool, calm, and creative.</p>
+                    <span>Explore blue →</span>
+                </a>
+                <a href="product.html?category=GIRLCINEMART" class="colour-card green-card animate-on-scroll">
+                    <div class="colour-card-circle">04</div>
+                    <h3>Go Green</h3>
+                    <p>Fresh looks for creators.</p>
+                    <span>Explore green →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================================
+             BRAND CTA
+        ============================================ -->
+        <section class="cta-section">
+            <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+            <h2>Have a vision? Let's equip it.</h2>
+            <p>Find the professional tools you need to capture, create, and tell your story with clarity and impact.</p>
+            <a href="product.html" class="button">Explore CineMart →</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <span class="logo-wordmark">CINE<em>MART</em></span>
+                    <span class="logo-tagline">YOUR VISION. OUR EQUIPMENT.</span>
+                </a>
+                <p>Your premier destination for professional cinematography equipment, creative filmmaking gear, and the GirlCineMart collection.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <a href="product.html">Shop All</a>
+                <a href="product.html?category=CAMERAS">Cinema Cameras</a>
+                <a href="product.html?category=LENSES">Lenses &amp; Optics</a>
+                <a href="product.html?category=ACCESSORIES">Rigs &amp; Accessories</a>
+                <a href="girlcinemart.html">GirlCineMart ♡</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Help</h3>
+                <a href="cart.html">Shopping Cart</a>
+                <a href="login.html">Account</a>
+                <a href="#faq">FAQs</a>
+                <a href="#shipping">Shipping &amp; Returns</a>
+                <a href="mailto:hello@cinemart.example">Contact Us</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Stay Connected</h3>
+                <p>Join thousands of Nigerian filmmakers creating world-class cinema.</p>
+                <a href="mailto:hello@cinemart.example">Email Us</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2026</span> CineMart Cinema Equipment Co. All rights reserved.</p>
+            <a href="admin-login.html" style="color: rgba(255,249,239,0.35); font-size: 11px; text-decoration: none;">Executive Portal</a>
+            <p>Made for the love of creativity. ♡</p>
+        </div>
+    </footer>
+
+    <script type="module" src="site.js"></script>
+    <script type="module" src="script.js"></script>
+
+    <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // Header scroll effect
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+    </script>
+
+</body>
+</html>

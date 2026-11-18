@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GirlCineMart ♡ | A Colourful World of Filmmaking</title>
+    <meta name="description" content="Explore the exclusive GirlCineMart collection at CineMart. Colourful cinema cameras, pastel rigs, aesthetic lenses, and creator setups.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* -----------------------------------------------------
+           GIRLCINEMART DEDICATED SIGNATURE STYLING
+        ----------------------------------------------------- */
+        :root {
+            --girl-pink: #FF2E93;
+            --girl-violet: #9B30FF;
+            --girl-lilac: #D4A5FF;
+            --girl-cyan: #00F0FF;
+            --girl-grad: linear-gradient(110deg, #FF2E93 0%, #D430FF 45%, #7928CA 100%);
+        }
+
+        .girl-page-hero {
+            position: relative;
+            isolation: isolate;
+            padding: 80px 7% 70px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 75% 40%, rgba(255, 46, 147, 0.22) 0%, rgba(121, 40, 202, 0.15) 35%, transparent 65%),
+                radial-gradient(circle at 20% 60%, rgba(0, 240, 255, 0.08) 0%, transparent 45%),
+                linear-gradient(180deg, #09080E 0%, #120D1A 50%, #070709 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .girl-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 46, 147, 0.12);
+            border: 1px solid rgba(255, 46, 147, 0.4);
+            color: #FF85C0;
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .girl-page-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(38px, 5.2vw, 68px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -1.8px;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        .girl-grad-text {
+            display: block;
+            background: var(--girl-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 30px rgba(255, 46, 147, 0.45));
+        }
+
+        .girl-page-hero p {
+            color: var(--grey-light);
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 520px;
+            margin-bottom: 32px;
+        }
+
+        .girl-hero-image-box {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-xl);
+            background: radial-gradient(circle at 50% 50%, #20132B 0%, #0E0916 100%);
+            border: 1.5px solid rgba(255, 46, 147, 0.4);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 46, 147, 0.35);
+            overflow: hidden;
+            transition: transform var(--transition-slow), box-shadow var(--transition);
+        }
+
+        .girl-hero-image-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 75px rgba(0, 0, 0, 0.95), 0 0 65px rgba(255, 46, 147, 0.5);
+        }
+
+        .girl-hero-image-box img {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            aspect-ratio: 16 / 11;
+            object-fit: cover;
+            display: block;
+            transition: transform var(--transition-slow);
+        }
+
+        .girl-hero-image-box:hover img {
+            transform: scale(1.05);
+        }
+
+        .girl-hero-badge-overlay {
+            position: absolute;
+            bottom: 18px;
+            left: 18px;
+            right: 18px;
+            z-index: 3;
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            background: rgba(16, 10, 24, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 46, 147, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+        }
+
+        .girl-hero-badge-overlay span {
+            font-family: var(--font-display);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #FF85C0;
+            text-transform: uppercase;
+        }
+
+        .girl-hero-badge-overlay strong {
+            font-size: 13.5px;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        /* Swatches Toolbar */
+        .swatches-bar {
+            padding: 18px 7%;
+            background: rgba(12, 10, 18, 0.96);
+            border-bottom: 1px solid rgba(255, 46, 147, 0.2);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            position: sticky;
+            top: 72px;
+            z-index: 90;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .swatches-list {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 4px 0;
+            scrollbar-width: none;
+        }
+
+        .swatches-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .swatch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--grey-light);
+            font-family: var(--font-body);
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .swatch-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .swatch-btn:hover,
+        .swatch-btn.active {
+            border-color: #FF2E93;
+            color: #FFFFFF;
+            background: rgba(255, 46, 147, 0.15);
+            box-shadow: 0 0 16px rgba(255, 46, 147, 0.3);
+        }
+
+        /* Girl Grid */
+        .girl-grid-section {
+            padding: 48px 7% 90px;
+            background: #070709;
+        }
+
+        .girl-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .girl-card {
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, #15101C 0%, #0D0B12 100%);
+            border: 1px solid rgba(255, 46, 147, 0.22);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all var(--transition);
+        }
+
+        .girl-card:hover {
+            transform: translateY(-6px);
+            border-color: #FF2E93;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 46, 147, 0.35);
+        }
+
+        .girl-card-media {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #22142B 0%, #0D0914 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .girl-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform var(--transition-slow);
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.7));
+        }
+
+        .girl-card:hover .girl-card-media img {
+            transform: scale(1.08) translateY(-2px);
+            filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 25px rgba(255, 46, 147, 0.35));
+        }
+
+        .girl-card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 2;
+            padding: 4px 12px;
+            border-radius: var(--radius-pill);
+            background: linear-gradient(110deg, #FF2E93, #7928CA);
+            color: #FFFFFF;
+            font-family: var(--font-display);
+            font-size: 9.5px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .girl-card-content {
+            padding: 22px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .girl-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FF70B8;
+        }
+
+        .girl-card-title {
+            font-family: var(--font-display);
+            font-size: 17px;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.35;
+        }
+
+        .girl-card-desc {
+            color: var(--grey-light);
+            font-size: 12.5px;
+            line-height: 1.6;
+        }
+
+        .girl-card-footer {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .girl-card-price {
+            font-family: var(--font-display);
+            font-size: 19px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+
+        .btn-girl-add {
+            padding: 9px 18px;
+            border-radius: var(--radius-pill);
+            background: var(--girl-grad);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            font-size: 12.5px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: 0 4px 16px rgba(255, 46, 147, 0.4);
+        }
+
+        .btn-girl-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 46, 147, 0.6);
+            filter: brightness(1.15);
+        }
+
+        /* Manifesto Strip */
+        .manifesto-section {
+            padding: 80px 7%;
+            background: radial-gradient(circle at 50% 50%, rgba(121, 40, 202, 0.15) 0%, #070709 80%);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .manifesto-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 900;
+            color: #FFFFFF;
+            margin-bottom: 18px;
+        }
+
+        .manifesto-section p {
+            max-width: 680px;
+            margin: 0 auto 32px;
+            color: var(--grey-light);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 900px) {
+            .girl-page-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 60px 5% 50px;
+            }
+            .girl-page-hero p {
+                margin: 0 auto 28px;
+            }
+            .girl-cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        @media (max-width: 767px) {
+            .swatches-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 14px 4%;
+                gap: 10px;
+            }
+            .swatches-list {
+                width: 100%;
+            }
+            .girl-grid-section {
+                padding: 36px 4% 60px;
+            }
+            .manifesto-section {
+                padding: 50px 4%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .girl-hero-badge-overlay {
+                flex-direction: column;
+                text-align: center;
+                gap: 4px;
+                padding: 10px 14px;
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+            }
+            .girl-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Extra Small Phones (320px to 380px) */
+        @media (max-width: 380px) {
+            .girl-page-hero {
+                padding: 40px 3% 36px;
+            }
+            .girl-page-hero h1 {
+                font-size: 30px;
+            }
+            .girl-badge-pill {
+                font-size: 9.5px;
+                letter-spacing: 1.5px;
+                padding: 5px 12px;
+            }
+            .girl-card-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .btn-girl-add {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Large Desktop Screens (1441px and Above) */
+        @media (min-width: 1441px) {
+            .girl-page-hero,
+            .swatches-bar,
+            .girl-grid-section,
+            .manifesto-section {
+                padding-left: calc((100% - 1360px) / 2);
+                padding-right: calc((100% - 1360px) / 2);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        FREE NATIONWIDE EXPRESS SHIPPING ON ALL GIRLCINEMART CREATOR KITS &nbsp;·&nbsp; OFFICIAL CINEMART WARRANTY
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header" id="main-header">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🎞️</span>
+            <div>
+                <span class="logo-wordmark">CINE<span class="brand-gradient">MART</span></span>
+                <span class="logo-tagline">YOUR VISION. OUR EQUIPMENT.</span>
+            </div>
+        </a>
+
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            <a href="product.html">Shop</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="girlcinemart.html" class="girl-link active" style="box-shadow: 0 0 16px rgba(255, 46, 147, 0.5);">GirlCineMart ♡</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-button" onclick="window.location.href='product.html'" aria-label="Search">⌕</button>
+            <a href="login.html" class="account-link">Account</a>
+            <a href="cart.html" class="cart-link" aria-label="View cart">
+                Cart <span id="cart-count">0</span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================
+             GIRLCINEMART HERO
+        ============================================ -->
+        <section class="girl-page-hero">
+            <div>
+                <div class="girl-badge-pill">
+                    <span>♡ OFFICIAL SIGNATURE LINE</span>
+                </div>
+
+                <h1>
+                    A COLOURFUL WORLD
+                    <span class="girl-grad-text">OF CINEMATIC CREATIVITY.</span>
+                </h1>
+
+                <p>
+                    Who says professional filmmaking equipment has to stay in black and grey? Break creative boundaries with pastel cinema cameras, electric violet anamorphic primes, studio lighting in vivid neon, and designer gear crafted for visionary storytellers.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#collection-grid" class="button" style="background: var(--girl-grad); color: #fff; box-shadow: 0 8px 24px rgba(255,46,147,0.4);">
+                        Shop Collection ♡
+                    </a>
+                    <a href="product.html" class="button button-outline">
+                        Browse All Gear →
+                    </a>
+                </div>
+            </div>
+
+            <div class="girl-hero-image-box">
+                <img src="./images/girl.cam.png.jpg" alt="GirlCineMart Rose Quartz Creator Cinema Camera" loading="eager">
+                <div class="girl-hero-badge-overlay">
+                    <div>
+                        <span>SIGNATURE FLAGSHIP</span>
+                        <strong>Rose Quartz 4K Cinema Rig</strong>
+                    </div>
+                    <span style="color: var(--girl-pink); font-size: 16px;">♡</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SWATCHES FILTER TOOLBAR
+        ============================================ -->
+        <section class="swatches-bar">
+            <div class="swatches-list" id="swatch-filters" role="tablist" aria-label="Filter by colorway">
+                <button type="button" class="swatch-btn active" data-shade="ALL">
+                    <span>All Shades</span>
+                </button>
+                <button type="button" class="swatch-btn" data-shade="PINK">
+                    <span class="swatch-dot" style="background: #FF2E93;"></span>
+                    <span>Rose Quartz &amp; Pink</span>
+                </button>
+                <button type="button" class="swatch-btn" data-shade="VIOLET">
+                    <span class="swatch-dot" style="background: #9B30FF;"></span>
+                    <span>Electric Violet</span>
+                </button>
+                <button type="button" class="swatch-btn" data-shade="TEAL">
+                    <span class="swatch-dot" style="background: #00F0FF;"></span>
+                    <span>Neo Mint &amp; Cyan</span>
+                </button>
+                <button type="button" class="swatch-btn" data-shade="TITANIUM">
+                    <span class="swatch-dot" style="background: #E0E0FF;"></span>
+                    <span>Iridescent Chrome</span>
+                </button>
+            </div>
+
+            <span id="girl-product-count" style="color: var(--grey-muted); font-size: 12px; font-weight: 700; white-space: nowrap;">
+                Showing 8 Designer Instruments
+            </span>
+        </section>
+
+        <!-- ============================================
+             CURATED PRODUCTS GRID
+        ============================================ -->
+        <section class="girl-grid-section" id="collection-grid">
+            <div class="girl-cards-grid" id="girl-cards-container">
+                <!-- Dynamically rendered via script below -->
+            </div>
+        </section>
+
+        <!-- ============================================
+             CREATIVE MANIFESTO
+        ============================================ -->
+        <section class="manifesto-section">
+            <p class="eyebrow" style="color: #FF70B8;">YOUR STYLE · YOUR FRAME · YOUR STORY</p>
+            <h2>Cinematic power, expressive soul.</h2>
+            <p>
+                Every product in the GirlCineMart collection meets the exact same technical benchmarks as Hollywood cinema bodies — dual native ISO, 10-bit ProRes recording, and pristine glass optics — enveloped in an unapologetically expressive aesthetic.
+            </p>
+            <a href="product.html" class="button button-outline" style="border-color: #FF2E93; color: #FF85C0;">
+                Explore CineMart Master Line →
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <span class="logo-icon">🎞️</span>
+                    <div>
+                        <span class="logo-wordmark">CINE<span class="brand-gradient">MART</span></span>
+                        <span class="logo-tagline">YOUR VISION. OUR EQUIPMENT.</span>
+                    </div>
+                </a>
+                <p>Equipping filmmakers, content creators, and visual storytellers with industry-grade equipment and the exclusive GirlCineMart collection.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore Store</h3>
+                <a href="product.html">All Equipment</a>
+                <a href="product.html?category=CAMERAS">Cinema Cameras</a>
+                <a href="product.html?category=LENSES">Lenses &amp; Optics</a>
+                <a href="girlcinemart.html">GirlCineMart Collection ♡</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <a href="cart.html">View Cart</a>
+                <a href="login.html">Account &amp; Orders</a>
+                <a href="index.html#faq">Shipping &amp; Returns</a>
+                <a href="mailto:support@cinemart.com">Equipment Advice</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Stay Connected</h3>
+                <p>Join thousands of Nigerian filmmakers creating world-class cinema.</p>
+                <a href="mailto:hello@cinemart.example">Contact Sales</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2026</span> CineMart Cinema Equipment Co. All rights reserved.</p>
+            <a href="admin-login.html" style="color: rgba(255,249,239,0.35); font-size: 11px; text-decoration: none;">Executive Portal</a>
+            <p>Made for the love of creativity. ♡</p>
+        </div>
+    </footer>
+
+    <!-- Cart Notification Toast -->
+    <div id="toast-notification" class="cinemart-toast" style="position:fixed; bottom:24px; right:24px; z-index:9999; display:none; background:#1A1324; border:1px solid #FF2E93; border-radius:14px; padding:16px 22px; box-shadow:0 10px 30px rgba(0,0,0,0.8); color:#fff; align-items:center; gap:16px;">
+        <span id="toast-text">Item added to cart!</span>
+        <a href="cart.html" style="color:#FF70B8; font-weight:800; text-decoration:none;">View Cart →</a>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="site.js"></script>
+    <script>
+        const CART_KEY = "cinemart-cart";
+
+        const GIRL_PRODUCTS = [
+            {
+                id: "cinemart-girl-edition",
+                name: "GirlCineMart Rose Quartz Creator Camera",
+                category: "CAMERAS",
+                shade: "PINK",
+                badge: "SIGNATURE FLAGSHIP",
+                price: 1650000,
+                rating: 5.0,
+                image: "./images/girl.cam.png.jpg",
+                desc: "Pastel blush cinema body featuring 4K 60p, flip selfie touchscreen, dual native ISO, and golden tactile control dials."
+            },
+            {
+                id: "cinemart-lilac-lens",
+                name: "Lilac Dream Anamorphic 35mm T2.0 Lens",
+                category: "LENSES",
+                shade: "VIOLET",
+                badge: "ANAMORPHIC CINE",
+                price: 1120000,
+                rating: 4.9,
+                image: "./images/cam2.png.jpg",
+                desc: "Expressive 1.33x anamorphic squeeze with dreamy violet lens flare, oval bokeh, and geared focus rings."
+            },
+            {
+                id: "cinemart-neon-wand",
+                name: "Cyberpunk Neon RGB Studio Light Wand",
+                category: "LIGHTING",
+                shade: "PINK",
+                badge: "RGB CREATIVE",
+                price: 320000,
+                rating: 4.8,
+                image: "./images/cam4.png.jpg",
+                desc: "Ultra-portable handheld magnetic RGB tube light with app wireless syncing, 360-degree color gamut, and FX modes."
+            },
+            {
+                id: "cinemart-mint-mic",
+                name: "Pastel Mint Dual Wireless Lavalier Kit",
+                category: "AUDIO",
+                shade: "TEAL",
+                badge: "WIRELESS PRO",
+                price: 280000,
+                rating: 4.9,
+                image: "./images/cam5.png.jpg",
+                desc: "Compact dual-channel 2.4GHz wireless lavalier setup with 24-bit studio audio, charging case, and noise reduction."
+            },
+            {
+                id: "cinemart-violet-gimbal",
+                name: "Ultraviolet Carbon Fiber Handheld Gimbal",
+                category: "ACCESSORIES",
+                shade: "VIOLET",
+                badge: "3-AXIS PRO",
+                price: 780000,
+                rating: 4.8,
+                image: "./images/cam9.png.jpg",
+                desc: "Carbon-reinforced 3-axis cinema stabilizer with violet anodized locking rings and automated axis locks."
+            },
+            {
+                id: "cinemart-sakura-monitor",
+                name: "Sakura Pink 7-inch High-Bright 4K Monitor",
+                category: "ACCESSORIES",
+                shade: "PINK",
+                badge: "1500 NITS HDR",
+                price: 450000,
+                rating: 5.0,
+                image: "./images/cam3.png.jpg",
+                desc: "Sunlight-viewable 1500 nits IPS touch monitor with custom 3D LUT preview, false color, and HDMI loop-through."
+            },
+            {
+                id: "cinemart-iridescent-mattebox",
+                name: "Iridescent Titanium Swing-Away Matte Box",
+                category: "ACCESSORIES",
+                shade: "TITANIUM",
+                badge: "LIMITED EDITION",
+                price: 590000,
+                rating: 4.9,
+                image: "./images/cam6.png.jpg",
+                desc: "Rainbow anodized titanium alloy matte box with dual 4x5.65 filter trays and adjustable carbon fiber top flag."
+            },
+            {
+                id: "cinemart-sky-desk-arm",
+                name: "Electric Sky Multi-Angle Creator Studio Arm",
+                category: "ACCESSORIES",
+                shade: "TEAL",
+                badge: "STUDIO ESSENTIAL",
+                price: 360000,
+                rating: 4.7,
+                image: "./images/cam7.png.jpg",
+                desc: "Heavy-duty desktop mount boom arm with built-in cable channels and 360-degree ball head for overhead filming."
+            }
+        ];
+
+        function formatNaira(amount) {
+            return new Intl.NumberFormat("en-NG", {
+                style: "currency",
+                currency: "NGN",
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function getCart() {
+            try {
+                return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+            } catch {
+                return [];
+            }
+        }
+
+        function updateCartBadge() {
+            const count = getCart().reduce((acc, item) => acc + (Number(item.quantity) || 0), 0);
+            document.querySelectorAll("#cart-count, .cart-link span").forEach(el => {
+                el.textContent = count;
+            });
+        }
+
+        function addToCart(prod) {
+            const cart = getCart();
+            const existing = cart.find(item => item.id === prod.id);
+            if (existing) {
+                existing.quantity = (existing.quantity || 1) + 1;
+            } else {
+                cart.push({
+                    id: prod.id,
+                    name: prod.name,
+                    price: prod.price,
+                    image: prod.image,
+                    quantity: 1
+                });
+            }
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+            window.dispatchEvent(new Event("cinemart-cart-updated"));
+            updateCartBadge();
+
+            // Show Toast
+            const toast = document.getElementById("toast-notification");
+            const text = document.getElementById("toast-text");
+            if (toast && text) {
+                text.textContent = `Added "${prod.name}" to your cart!`;
+                toast.style.display = "flex";
+                setTimeout(() => {
+                    toast.style.display = "none";
+                }, 3500);
+            }
+        }
+
+        function renderGirlProducts(shadeFilter = "ALL") {
+            const container = document.getElementById("girl-cards-container");
+            const countEl = document.getElementById("girl-product-count");
+            if (!container) return;
+
+            let items = shadeFilter === "ALL" 
+                ? GIRL_PRODUCTS 
+                : GIRL_PRODUCTS.filter(p => p.shade === shadeFilter);
+
+            if (countEl) {
+                countEl.textContent = `Showing ${items.length} ${items.length === 1 ? "Designer Instrument" : "Designer Instruments"}`;
+            }
+
+            container.innerHTML = items.map(p => `
+                <article class="girl-card">
+                    <div class="girl-card-media">
+                        <span class="girl-card-badge">${p.badge}</span>
+                        <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='./images/girl.cam.png.jpg'">
+                    </div>
+                    <div class="girl-card-content">
+                        <div class="girl-card-meta">
+                            <span>${p.category}</span>
+                            <span>★ ${p.rating.toFixed(1)}</span>
+                        </div>
+                        <h3 class="girl-card-title">${p.name}</h3>
+                        <p class="girl-card-desc">${p.desc}</p>
+                        <div class="girl-card-footer">
+                            <span class="girl-card-price">${formatNaira(p.price)}</span>
+                            <button type="button" class="btn-girl-add" data-id="${p.id}">
+                                + Add to Cart ♡
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `).join("");
+
+            // Attach cart buttons
+            container.querySelectorAll(".btn-girl-add").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const id = btn.dataset.id;
+                    const prod = GIRL_PRODUCTS.find(item => item.id === id);
+                    if (prod) addToCart(prod);
+                });
+            });
+        }
+
+        // Swatch filter clicks
+        document.querySelectorAll("#swatch-filters .swatch-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll("#swatch-filters .swatch-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                renderGirlProducts(btn.dataset.shade);
+            });
+        });
+
+        // Initialize
+        renderGirlProducts();
+        updateCartBadge();
+        window.addEventListener("cinemart-cart-updated", updateCartBadge);
+    </script>
+</body>
+</html>

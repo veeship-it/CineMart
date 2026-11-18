@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop professional cinema cameras, lenses, lighting, rigs, and creative filmmaking gear at CineMart.">
+    <title>Equipment Shop | CineMart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+
+    <div class="announcement-bar">
+        <p>YOUR CREATIVE VISION DESERVES THE BEST EQUIPMENT — FREE NATIONWIDE SHIPPING ON ORDERS OVER ₦100,000</p>
+    </div>
+
+    <header class="header" id="main-header">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🎞️</span>
+            <div>
+                <span class="logo-wordmark">CINE<span class="brand-gradient">MART</span></span>
+                <span class="logo-tagline">YOUR VISION. OUR EQUIPMENT.</span>
+            </div>
+        </a>
+
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            <a href="product.html" class="active" id="nav-shop-link">Shop</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="girlcinemart.html" class="girl-link">GirlCineMart ♡</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-button" id="header-search-btn" aria-label="Search equipment">⌕</button>
+            <a href="login.html" class="account-link">Account</a>
+            <a href="cart.html" class="cart-link" aria-label="View shopping cart">
+                Cart <span id="cart-count">0</span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <main class="product-details-page">
+
+        <!-- ==============================================
+             SHOP CATALOG VIEW (BROWSE ALL GEAR)
+        ============================================== -->
+        <section id="shop-catalog-view" class="shop-catalog-section">
+
+            <div class="shop-hero">
+                <span class="eyebrow">CINEMART OFFICIAL EQUIPMENT STORE</span>
+                <h1>Every story needs the <span>right gear.</span></h1>
+                <p>Browse our handpicked inventory of cinema cameras, high-speed lenses, production accessories, and the exclusive GirlCineMart collection.</p>
+            </div>
+
+            <div class="shop-toolbar">
+                <div class="shop-toolbar-top">
+                    <div class="shop-search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="shop-search-input" class="shop-search-input" placeholder="Search cameras, lenses, 6K rigs, accessories..." autocomplete="off">
+                        <button type="button" id="shop-search-clear" class="shop-search-clear" hidden aria-label="Clear search">✕</button>
+                    </div>
+
+                    <div class="shop-toolbar-controls">
+                        <div class="shop-sort-wrap">
+                            <label for="shop-sort">Sort by:</label>
+                            <select id="shop-sort" class="shop-sort-select">
+                                <option value="featured">Featured First</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="name-asc">Name: A to Z</option>
+                                <option value="rating-desc">Customer Rating</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shop-categories" id="category-pills" role="tablist" aria-label="Filter products by category">
+                    <button type="button" class="category-pill active" data-category="ALL">All Equipment</button>
+                    <button type="button" class="category-pill" data-category="CAMERAS">Cameras</button>
+                    <button type="button" class="category-pill" data-category="LENSES">Lenses</button>
+                    <button type="button" class="category-pill" data-category="ACCESSORIES">Accessories</button>
+                    <button type="button" class="category-pill pill-girl" data-category="GIRLCINEMART">GirlCineMart ♡</button>
+                    <span id="results-count" class="results-count">Showing 10 products</span>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="shop-grid" class="shop-product-grid" aria-live="polite">
+                <!-- Dynamically populated by product.js -->
+            </div>
+
+            <!-- Empty Search Results State -->
+            <div id="shop-empty-state" class="shop-empty-state-card" hidden>
+                <h3>No equipment found</h3>
+                <p>We couldn't find any products matching your search criteria. Try a different term or clear filters.</p>
+                <button type="button" id="btn-reset-filters" class="button button-dark">Show All Equipment</button>
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             PRODUCT DETAILS VIEW (SINGLE GEAR VIEW)
+        ============================================== -->
+        <section id="product-details-view" class="product-details-view" hidden>
+
+            <button type="button" id="back-to-shop-btn" class="btn-back-link">
+                ← Back to all equipment
+            </button>
+
+            <nav class="product-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="product.html" id="breadcrumb-shop-link">Shop</a>
+                <span class="breadcrumb-separator">/</span>
+                <span id="breadcrumb-category">Equipment</span>
+                <span class="breadcrumb-separator">/</span>
+                <span id="breadcrumb-product-name" aria-current="page">Product Details</span>
+            </nav>
+
+            <div id="product-loading" class="product-status">
+                Loading product details...
+            </div>
+
+            <div id="product-error" class="product-status shop-empty-state-card" hidden>
+                <h3>Product not found</h3>
+                <p>The equipment you requested could not be located or may have been retired from the catalog.</p>
+                <button type="button" id="btn-error-back" class="button button-dark">Return to Shop Catalog</button>
+            </div>
+
+            <section id="product-details" class="product-details-layout" hidden>
+
+                <!-- Media Gallery Column -->
+                <div class="product-gallery">
+                    <div class="product-main-image-wrap">
+                        <span id="product-badge" class="product-detail-badge">FEATURED</span>
+                        <img id="main-product-image" src="" alt="Product showcase image">
+                    </div>
+                    <div id="product-thumbnails" class="product-thumbnails" aria-label="Product thumbnails gallery">
+                        <!-- Dynamic thumbnail buttons -->
+                    </div>
+                </div>
+
+                <!-- Product Information Column -->
+                <div class="product-information">
+
+                    <div class="product-header-tag">
+                        <span id="product-category" class="product-category-pill">Equipment</span>
+                    </div>
+
+                    <h1 id="product-name">Product Name</h1>
+
+                    <div class="product-rating-row">
+                        <span class="stars" id="product-stars">★★★★★</span>
+                        <span id="product-rating-score" class="rating-score">4.9</span>
+                        <span id="product-reviews-count" class="reviews-count">(42 verified reviews)</span>
+                    </div>
+
+                    <div class="product-price-section">
+                        <span id="product-price" class="product-price-current">₦0.00</span>
+                        <span class="product-vat-tag">VAT & Insured Delivery Included</span>
+                    </div>
+
+                    <div class="product-availability">
+                        <span class="availability-dot"></span>
+                        <span id="product-stock">In Stock & Ready to Ship</span>
+                    </div>
+
+                    <p id="product-description" class="product-description-text"></p>
+
+                    <div id="product-highlights-box" class="product-highlights-box">
+                        <h3>Key Highlights</h3>
+                        <ul id="product-highlights-list" class="product-highlights-list"></ul>
+                    </div>
+
+                    <div class="product-purchase-box">
+                        <div class="quantity-control-wrap">
+                            <label for="product-quantity">Select Quantity</label>
+                            <div class="quantity-selector">
+                                <button type="button" id="decrease-quantity" aria-label="Decrease quantity">−</button>
+                                <input type="number" id="product-quantity" value="1" min="1" max="99">
+                                <button type="button" id="increase-quantity" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+
+                        <div class="product-action-buttons">
+                            <button type="button" id="add-to-cart" class="btn-add-cart-primary">
+                                🛒 ADD TO CART
+                            </button>
+                            <button type="button" id="buy-now" class="btn-buy-now-accent">
+                                ⚡ BUY NOW
+                            </button>
+                        </div>
+
+                        <p id="cart-feedback" class="cart-feedback-banner" aria-live="polite"></p>
+                    </div>
+
+                    <div class="product-trust-strip">
+                        <div class="trust-item">
+                            <span class="trust-icon">🛡️</span>
+                            <div>
+                                <strong>1-Year CineMart Warranty</strong>
+                                <span>Official manufacturer coverage</span>
+                            </div>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">🚚</span>
+                            <div>
+                                <strong>Safe Nationwide Shipping</strong>
+                                <span>Fully tracked & insured delivery</span>
+                            </div>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">🔄</span>
+                            <div>
+                                <strong>7-Day Returns</strong>
+                                <span>Risk-free replacement guarantee</span>
+                            </div>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">📞</span>
+                            <div>
+                                <strong>Filmmaker Support</strong>
+                                <span>Talk to cinema equipment experts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Specifications Table -->
+            <section id="specifications-section" class="product-specifications-wrap" hidden>
+                <div class="product-section-heading">
+                    <span class="section-title-sub">TECHNICAL SPECIFICATIONS</span>
+                    <h2 class="section-title-main">Engineering & Build</h2>
+                </div>
+                <div id="product-specifications" class="specs-grid"></div>
+            </section>
+
+            <!-- Related Recommendations -->
+            <section id="related-products-section" class="related-products-section" hidden>
+                <div class="product-section-heading">
+                    <span class="section-title-sub">CREATIVE RECOMMENDATIONS</span>
+                    <h2 class="section-title-main">You May Also Like</h2>
+                </div>
+                <div id="related-products-grid" class="shop-product-grid"></div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- Floating Cart Toast Notification -->
+    <div id="toast-notification" class="cinemart-toast" role="alert" aria-live="assertive">
+        <span id="toast-text" class="cinemart-toast-text">Equipment added to cart!</span>
+        <a href="cart.html" class="cinemart-toast-btn">View Cart →</a>
+    </div>
+
+    <!-- Professional CineMart Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <span class="logo-icon">🎞️</span>
+                    <div>
+                        <span class="logo-wordmark">CINE<span class="brand-gradient">MART</span></span>
+                        <span class="logo-tagline">YOUR VISION. OUR EQUIPMENT.</span>
+                    </div>
+                </a>
+                <p>Equipping filmmakers, content creators, and visual storytellers with industry-grade equipment and creative instruments.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore Store</h3>
+                <a href="product.html">All Equipment</a>
+                <a href="product.html?category=CAMERAS">Cameras</a>
+                <a href="product.html?category=LENSES">Lenses & Optics</a>
+                <a href="product.html?category=ACCESSORIES">Rigs & Accessories</a>
+                <a href="girlcinemart.html">GirlCineMart Edition ♡</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <a href="cart.html">View Cart</a>
+                <a href="login.html">Account & Orders</a>
+                <a href="index.html#faq">Shipping & Returns</a>
+                <a href="mailto:support@cinemart.com">Equipment Advice</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Stay Connected</h3>
+                <p>Join thousands of Nigerian filmmakers creating world-class cinema.</p>
+                <a href="mailto:hello@cinemart.example">Contact Sales</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2026</span> CineMart Cinema Equipment Co. All rights reserved.</p>
+            <a href="admin-login.html" style="color: rgba(255,249,239,0.35); font-size: 11px; text-decoration: none;">Executive Portal</a>
+            <p>Made for the love of creativity. ♡</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="site.js"></script>
+    <script type="module" src="product.js"></script>
+</body>
+</html>

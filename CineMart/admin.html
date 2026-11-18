@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineMart — Executive Admin Portal</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-brand">
+        <a href="index.html" class="logo">
+          CINEMART
+          <small>EXECUTIVE PORTAL</small>
+        </a>
+      </div>
+
+      <div class="admin-sidebar-nav-scroll">
+        
+        <!-- MAIN -->
+        <div class="nav-section-title">Main</div>
+        <nav class="admin-nav" aria-label="Main Navigation">
+          <button class="nav-item active" data-view="overview-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Overview</span>
+          </button>
+        </nav>
+
+        <!-- PRODUCT MANAGEMENT -->
+        <div class="nav-section-title">Product Management</div>
+        <nav class="admin-nav" aria-label="Product Navigation">
+          <button class="nav-item" data-view="products-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <span>Products List</span>
+          </button>
+          <button class="nav-item" data-view="add-product-view" id="nav-add-product-btn">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span>Add New Product</span>
+          </button>
+          <button class="nav-item" data-view="categories-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>Categories</span>
+          </button>
+          <button class="nav-item" data-view="inventory-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span>Inventory</span>
+            <span class="nav-badge danger" id="sidebar-inventory-badge">1 Low</span>
+          </button>
+        </nav>
+
+        <!-- SALES MANAGEMENT -->
+        <div class="nav-section-title">Sales Management</div>
+        <nav class="admin-nav" aria-label="Sales Navigation">
+          <button class="nav-item" data-view="orders-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>Orders</span>
+            <span class="nav-badge" id="sidebar-orders-badge">24</span>
+          </button>
+          <button class="nav-item" data-view="order-details-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>Order Details</span>
+          </button>
+          <button class="nav-item" data-view="payments-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <span>Payments</span>
+          </button>
+          <button class="nav-item" data-view="shipping-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span>Shipping &amp; Delivery</span>
+          </button>
+          <button class="nav-item" data-view="coupons-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <span>Discounts &amp; Coupons</span>
+          </button>
+          <button class="nav-item" data-view="returns-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            <span>Returns &amp; Refunds</span>
+          </button>
+        </nav>
+
+        <!-- CUSTOMER MANAGEMENT -->
+        <div class="nav-section-title">Customer Management</div>
+        <nav class="admin-nav" aria-label="Customer Navigation">
+          <button class="nav-item" data-view="customers-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Customers List</span>
+          </button>
+          <button class="nav-item" data-view="customer-details-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Customer Details</span>
+          </button>
+          <button class="nav-item" data-view="reviews-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Reviews &amp; Ratings</span>
+          </button>
+          <button class="nav-item" data-view="support-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Customer Support</span>
+            <span class="nav-badge" id="sidebar-support-badge">2 New</span>
+          </button>
+        </nav>
+
+        <!-- ADMINISTRATION -->
+        <div class="nav-section-title">Administration</div>
+        <nav class="admin-nav" aria-label="Admin Navigation">
+          <button class="nav-item" data-view="notifications-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span>Notifications</span>
+            <span class="nav-badge" id="sidebar-notif-badge">3</span>
+          </button>
+          <button class="nav-item" data-view="staff-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            <span>Staff &amp; Permissions</span>
+          </button>
+          <button class="nav-item" data-view="activity-logs-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Activity Logs</span>
+          </button>
+          <button class="nav-item" data-view="reports-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span>Reports &amp; Exports</span>
+          </button>
+          <button class="nav-item" data-view="settings-view">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Store Settings</span>
+          </button>
+        </nav>
+
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="index.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span>View Store</span>
+        </a>
+        <a href="admin-login.html" class="nav-item text-danger" id="admin-logout-btn">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="admin-main">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle Sidebar">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div>
+            <h1 class="page-title" id="admin-page-title">Dashboard Overview</h1>
+            <div class="breadcrumb" id="admin-breadcrumb">Console / Overview</div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="admin-search">
+            <input type="text" id="global-admin-search" placeholder="Search orders, catalog, clients...">
+          </div>
+          <button class="icon-btn" aria-label="Notifications" onclick="switchAdminView('notifications-view')">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notification-badge"></span>
+          </button>
+          <div class="admin-profile">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Admin Avatar" class="profile-avatar">
+            <div class="profile-info">
+              <strong id="admin-user-name">Kolawole V.</strong>
+              <small>System Admin</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- DYNAMIC PAGE CONTAINER -->
+      <div class="admin-content">
+
+        <!-- ==============================================
+             1. OVERVIEW PAGE (PRESERVED DASHBOARD)
+        ============================================== -->
+        <section id="overview-view" class="admin-view active">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-title">Total Revenue</span>
+                <span class="stat-badge positive">+14.2%</span>
+              </div>
+              <div class="stat-value">₦14,280,000</div>
+              <div class="stat-footer">Based on 148 fulfilled orders</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-title">Total Orders</span>
+                <span class="stat-badge positive">+8.5%</span>
+              </div>
+              <div class="stat-value">184</div>
+              <div class="stat-footer">24 pending fulfillment</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-title">Catalog Gear</span>
+                <span class="stat-badge neutral">Active</span>
+              </div>
+              <div class="stat-value" id="stat-total-products">12</div>
+              <div class="stat-footer">Across 4 core categories</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-title">Active Clients</span>
+                <span class="stat-badge positive">+22.0%</span>
+              </div>
+              <div class="stat-value">96</div>
+              <div class="stat-footer">Registered pro users</div>
+            </div>
+          </div>
+
+          <div class="analytics-row">
+            <div class="admin-panel chart-panel">
+              <div class="panel-header">
+                <h2>Quarterly Revenue Trend</h2>
+                <span class="sample-tag">Visual Preview</span>
+              </div>
+              <div class="bar-chart-preview">
+                <div class="chart-bar-wrap"><div class="chart-bar" style="height: 45%;"></div><span>Jan</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="height: 60%;"></div><span>Feb</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="height: 85%;"></div><span>Mar</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="height: 70%;"></div><span>Apr</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="height: 95%;"></div><span>May</span></div>
+              </div>
+            </div>
+
+            <div class="admin-panel bestsellers-panel">
+              <div class="panel-header">
+                <h2>Top Performing Gear</h2>
+              </div>
+              <div class="bestseller-list">
+                <div class="bestseller-item">
+                  <div class="item-title">RED V-Raptor 8K VV</div>
+                  <div class="item-sales">₦8,900,000 / 2 sold</div>
+                </div>
+                <div class="bestseller-item">
+                  <div class="item-title">ARRI Alexa Mini LF</div>
+                  <div class="item-sales">₦12,500,000 / 1 sold</div>
+                </div>
+                <div class="bestseller-item">
+                  <div class="item-title">Cooke Anamorphic 50mm</div>
+                  <div class="item-sales">₦4,200,000 / 3 sold</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-panel">
+            <div class="panel-header">
+              <h2>Recent CineMart Orders</h2>
+              <button class="btn-link-gold" onclick="switchAdminView('orders-view')">View All Orders →</button>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Payment</th>
+                    <th>Fulfillment</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="overview-orders-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             2. PRODUCTS CATALOG PAGE
+        ============================================== -->
+        <section id="products-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Equipment Catalog</h2>
+                <p class="subtitle">Filter, search, edit and manage product inventory.</p>
+              </div>
+              <div class="action-group">
+                <input type="text" id="product-search-input" placeholder="Search product..." class="table-search">
+                <select id="product-category-filter" class="table-select">
+                  <option value="ALL">All Categories</option>
+                  <option value="Cameras">Cameras</option>
+                  <option value="Lenses">Lenses</option>
+                  <option value="Lighting">Lighting</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="GirlCineMart">GirlCineMart</option>
+                </select>
+                <select id="product-sort-select" class="table-select">
+                  <option value="DEFAULT">Sort By: Default</option>
+                  <option value="PRICE_DESC">Price: High to Low</option>
+                  <option value="PRICE_ASC">Price: Low to High</option>
+                  <option value="STOCK_DESC">Highest Stock</option>
+                </select>
+                <button class="button-gold" onclick="prepareAddProductView()">+ Add New Gear</button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Thumbnail</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price (NGN)</th>
+                    <th>Stock</th>
+                    <th>Availability</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="products-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             3. ADD / EDIT PRODUCT PAGE
+        ============================================== -->
+        <section id="add-product-view" class="admin-view">
+          <div class="admin-panel form-panel">
+            <div class="panel-header">
+              <h2 id="form-view-heading">Add New Cine Gear</h2>
+              <button class="button-outline" onclick="switchAdminView('products-view')">Back to Catalog</button>
+            </div>
+
+            <form id="product-crud-form" class="admin-form">
+              <input type="hidden" id="form-product-id">
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="form-product-name">Product Name *</label>
+                  <input type="text" id="form-product-name" required placeholder="e.g. RED V-Raptor ST 8K VV">
+                </div>
+
+                <div class="form-group">
+                  <label for="form-product-category">Category *</label>
+                  <select id="form-product-category" required>
+                    <option value="">Select Category...</option>
+                    <option value="Cameras">Cameras</option>
+                    <option value="Lenses">Lenses</option>
+                    <option value="Lighting">Lighting</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="GirlCineMart">GirlCineMart Special</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="form-product-price">Price (₦ NGN) *</label>
+                  <input type="number" id="form-product-price" required min="0" placeholder="e.g. 8900000">
+                </div>
+
+                <div class="form-group">
+                  <label for="form-product-stock">Stock Quantity *</label>
+                  <input type="number" id="form-product-stock" required min="0" value="5">
+                </div>
+
+                <div class="form-group">
+                  <label for="form-product-availability">Availability Status</label>
+                  <select id="form-product-availability">
+                    <option value="In Stock">In Stock</option>
+                    <option value="Low Stock">Low Stock</option>
+                    <option value="Backorder">Backorder</option>
+                    <option value="Out of Stock">Out of Stock</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="form-product-image">Primary Product Image URL *</label>
+                <input type="url" id="form-product-image" required placeholder="https://images.unsplash.com/photo-...">
+                <small class="form-hint">Paste high-resolution image URL or pick one from sample assets.</small>
+              </div>
+
+              <div class="image-preview-box" id="image-preview-container">
+                <div class="preview-placeholder">Live Image Preview Window</div>
+                <img id="image-preview-tag" src="" alt="Live Preview" class="hidden">
+              </div>
+
+              <div class="form-group">
+                <label for="form-product-description">Detailed Description</label>
+                <textarea id="form-product-description" rows="4" placeholder="Enter key technical specs, sensor format, mount type..."></textarea>
+              </div>
+
+              <div class="form-checkbox">
+                <input type="checkbox" id="form-product-featured">
+                <label for="form-product-featured">Mark as Featured Product on Homepage</label>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="button-gold" id="save-product-btn">Save Product</button>
+                <button type="button" class="button-outline" onclick="switchAdminView('products-view')">Cancel</button>
+              </div>
+
+              <div id="form-feedback-msg" class="feedback-msg"></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             4. CATEGORIES MANAGEMENT PAGE
+        ============================================== -->
+        <section id="categories-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Gear Categories</h2>
+                <p class="subtitle">Organize equipment classifications across the CineMart storefront.</p>
+              </div>
+              <button class="button-gold" onclick="openCategoryModal()">+ Add New Category</button>
+            </div>
+
+            <div class="category-grid-container" id="categories-cards-grid"></div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             5. INVENTORY MANAGEMENT PAGE
+        ============================================== -->
+        <section id="inventory-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Stock Level Control</h2>
+                <p class="subtitle">Monitor low-stock items and adjust availability thresholds in real time.</p>
+              </div>
+              <div class="action-group">
+                <select id="inventory-filter-select" class="table-select">
+                  <option value="ALL">All Stock Levels</option>
+                  <option value="LOW">Low Stock (&lt; 3)</option>
+                  <option value="OUT">Out of Stock (0)</option>
+                </select>
+                <button class="button-outline" onclick="exportInventoryCSV()">Export Inventory</button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Current Stock</th>
+                    <th>Stock Alert Level</th>
+                    <th>Adjust Quantity</th>
+                  </tr>
+                </thead>
+                <tbody id="inventory-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             6. ORDERS MANAGEMENT PAGE
+        ============================================== -->
+        <section id="orders-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Client Orders</h2>
+                <p class="subtitle">Search, inspect and update order fulfillment status across nationwide shipments.</p>
+              </div>
+              <div class="action-group">
+                <input type="text" id="order-search-input" placeholder="Search order ID or client..." class="table-search">
+                <select id="order-status-filter" class="table-select">
+                  <option value="ALL">All Statuses</option>
+                  <option value="Processing">Processing</option>
+                  <option value="Shipped">Shipped</option>
+                  <option value="Delivered">Delivered</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Items</th>
+                    <th>Total (NGN)</th>
+                    <th>Date</th>
+                    <th>Payment Status</th>
+                    <th>Fulfillment</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="full-orders-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             7. ORDER DETAILS PAGE
+        ============================================== -->
+        <section id="order-details-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Order Dossier &amp; Fulfillment</h2>
+                <p class="subtitle">Complete audit trail, client invoice and shipping manifesto.</p>
+              </div>
+              <div class="action-group">
+                <button class="button-outline" onclick="switchAdminView('orders-view')">← Back to Orders</button>
+                <button class="button-gold" onclick="printOrderInvoice()">Print Proforma Invoice</button>
+              </div>
+            </div>
+
+            <div id="order-details-content-container">
+              <!-- Dynamically populated by admin.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             8. PAYMENTS MANAGEMENT PAGE
+        ============================================== -->
+        <section id="payments-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Payments &amp; Transactions</h2>
+                <p class="subtitle">Audit settled client funds, gateway health, and payout schedules.</p>
+              </div>
+              <div class="action-group">
+                <select id="payment-gateway-filter" class="table-select">
+                  <option value="ALL">All Gateways</option>
+                  <option value="Paystack">Paystack</option>
+                  <option value="Flutterwave">Flutterwave</option>
+                  <option value="Bank Transfer">Direct Wire</option>
+                </select>
+                <button class="button-outline" onclick="exportPaymentsCSV()">Export Transactions</button>
+              </div>
+            </div>
+
+            <!-- Gateway Health Cards -->
+            <div class="stats-grid" style="margin-bottom: 24px;">
+              <div class="stat-card" style="padding: 16px 20px;">
+                <div class="stat-header">
+                  <span class="stat-title">Paystack Gateway</span>
+                  <span class="stat-badge positive">Operational</span>
+                </div>
+                <div class="stat-value" style="font-size: 20px;">99.98% Uptime</div>
+                <div class="stat-footer">Direct card &amp; Apple Pay processing</div>
+              </div>
+              <div class="stat-card" style="padding: 16px 20px;">
+                <div class="stat-header">
+                  <span class="stat-title">Flutterwave Hub</span>
+                  <span class="stat-badge positive">Operational</span>
+                </div>
+                <div class="stat-value" style="font-size: 20px;">Active</div>
+                <div class="stat-footer">Pan-African multi-currency rails</div>
+              </div>
+              <div class="stat-card" style="padding: 16px 20px;">
+                <div class="stat-header">
+                  <span class="stat-title">Corporate Wire</span>
+                  <span class="stat-badge neutral">Verified</span>
+                </div>
+                <div class="stat-value" style="font-size: 20px;">Manual Match</div>
+                <div class="stat-footer">Zero transaction processing fee</div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Ref ID</th>
+                    <th>Order Ref</th>
+                    <th>Client Name</th>
+                    <th>Channel</th>
+                    <th>Amount (NGN)</th>
+                    <th>Status</th>
+                    <th>Timestamp</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="payments-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             9. SHIPPING & DELIVERY PAGE
+        ============================================== -->
+        <section id="shipping-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Shipping &amp; Logistics Tracking</h2>
+                <p class="subtitle">Insured transit manifests with DHL Express, GIG Logistics, and Red Star.</p>
+              </div>
+              <button class="button-gold" onclick="openCreateShipmentModal()">+ Dispatch Shipment</button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Waybill / Tracking #</th>
+                    <th>Order ID</th>
+                    <th>Destination</th>
+                    <th>Courier Carrier</th>
+                    <th>Est. Arrival</th>
+                    <th>Logistics Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="shipping-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             10. DISCOUNTS & COUPONS PAGE
+        ============================================== -->
+        <section id="coupons-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Discounts &amp; Promotional Codes</h2>
+                <p class="subtitle">Configure promotional campaign codes, filmmaker grants, and cart deductions.</p>
+              </div>
+              <button class="button-gold" onclick="openCouponModal()">+ Create Promo Code</button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Promo Code</th>
+                    <th>Discount Rate</th>
+                    <th>Redemptions</th>
+                    <th>Min. Order</th>
+                    <th>Expiry Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="coupons-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             11. RETURNS & REFUNDS PAGE
+        ============================================== -->
+        <section id="returns-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Returns &amp; RMA Authorizations</h2>
+                <p class="subtitle">Inspect returned cinematography units, warranty claims, and refund approvals.</p>
+              </div>
+              <select id="returns-filter-select" class="table-select">
+                <option value="ALL">All RMA Claims</option>
+                <option value="Pending">Pending Review</option>
+                <option value="Approved">Approved</option>
+                <option value="Refunded">Refunded</option>
+              </select>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>RMA Case #</th>
+                    <th>Order Ref</th>
+                    <th>Client Name</th>
+                    <th>Claim Reason</th>
+                    <th>Condition</th>
+                    <th>Refund Value</th>
+                    <th>Status</th>
+                    <th>Review Action</th>
+                  </tr>
+                </thead>
+                <tbody id="returns-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             12. CUSTOMERS LIST PAGE
+        ============================================== -->
+        <section id="customers-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Registered Filmmakers &amp; Studios</h2>
+                <p class="subtitle">View client activity, purchase history, and account metrics.</p>
+              </div>
+              <input type="text" id="customer-search-input" placeholder="Search client name or email..." class="table-search">
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Client Name</th>
+                    <th>Email Address</th>
+                    <th>Location</th>
+                    <th>Total Orders</th>
+                    <th>Lifetime Spend</th>
+                    <th>Client Tier</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="customers-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             13. CUSTOMER DETAILS PAGE
+        ============================================== -->
+        <section id="customer-details-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Client Profile Dossier</h2>
+                <p class="subtitle">Production studio profile, historical invoices, and personalized gear notes.</p>
+              </div>
+              <button class="button-outline" onclick="switchAdminView('customers-view')">← Back to Clients</button>
+            </div>
+
+            <div id="customer-details-container">
+              <!-- Dynamically populated by admin.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             14. REVIEWS & RATINGS PAGE
+        ============================================== -->
+        <section id="reviews-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Customer Reviews &amp; Testimonials</h2>
+                <p class="subtitle">Moderate verified purchaser reviews and feature top filmmaker feedback.</p>
+              </div>
+              <div class="action-group">
+                <span class="badge badge-gold" style="padding: 6px 12px; font-size: 12px;">★ Store Score: 4.9 / 5.0</span>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Gear Reviewed</th>
+                    <th>Client Name</th>
+                    <th>Rating</th>
+                    <th>Feedback Review</th>
+                    <th>Date</th>
+                    <th>Moderation</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="reviews-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             15. CUSTOMER SUPPORT PAGE
+        ============================================== -->
+        <section id="support-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Filmmaker Support Desk</h2>
+                <p class="subtitle">Optical compatibility consultations, technical troubleshooting, and inquiries.</p>
+              </div>
+              <select id="support-priority-filter" class="table-select">
+                <option value="ALL">All Inquiries</option>
+                <option value="Urgent">Urgent Priority</option>
+                <option value="High">High Priority</option>
+                <option value="Normal">Normal Priority</option>
+              </select>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Ticket #</th>
+                    <th>Client</th>
+                    <th>Subject Matter</th>
+                    <th>Priority</th>
+                    <th>Assigned Specialist</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="support-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             16. NOTIFICATIONS PAGE
+        ============================================== -->
+        <section id="notifications-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Executive Alerts &amp; Notifications</h2>
+                <p class="subtitle">Warehouse alerts, security notifications, and fulfillment dispatches.</p>
+              </div>
+              <button class="button-outline" onclick="markAllNotificationsRead()">Mark All as Read</button>
+            </div>
+
+            <div class="filter-tabs" id="notif-filter-tabs">
+              <button class="filter-tab active" data-notif-filter="ALL">All Alerts</button>
+              <button class="filter-tab" data-notif-filter="ORDER">Orders</button>
+              <button class="filter-tab" data-notif-filter="STOCK">Stock Alerts</button>
+              <button class="filter-tab" data-notif-filter="SECURITY">Security</button>
+            </div>
+
+            <div id="notifications-list-container">
+              <!-- Dynamically populated by admin.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             17. STAFF & PERMISSIONS PAGE
+        ============================================== -->
+        <section id="staff-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Staff &amp; Access Controls</h2>
+                <p class="subtitle">Manage admin personnel, departmental roles, and security authorization levels.</p>
+              </div>
+              <button class="button-gold" onclick="openStaffModal()">+ Invite Team Member</button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Personnel</th>
+                    <th>Portal Role</th>
+                    <th>Email Address</th>
+                    <th>2FA Security</th>
+                    <th>Last Active</th>
+                    <th>Permissions</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="staff-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             18. ACTIVITY AUDIT LOGS PAGE
+        ============================================== -->
+        <section id="activity-logs-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>System Audit &amp; Activity Trail</h2>
+                <p class="subtitle">Immutable logging of inventory edits, order adjustments, and administrative sign-ins.</p>
+              </div>
+              <button class="button-outline" onclick="exportLogsCSV()">Export Audit Trail</button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Authorized Staff</th>
+                    <th>Action Taken</th>
+                    <th>Target Resource</th>
+                    <th>Terminal IP</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody id="activity-logs-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             19. REPORTS & EXPORTS PAGE
+        ============================================== -->
+        <section id="reports-view" class="admin-view">
+          <div class="admin-panel">
+            <div class="panel-header flex-wrap">
+              <div>
+                <h2>Intelligence Reports &amp; Data Exports</h2>
+                <p class="subtitle">Generate certified CSV spreadsheets and JSON data packages for accounting.</p>
+              </div>
+              <div class="action-group">
+                <select id="report-period-select" class="table-select">
+                  <option value="CURRENT_MONTH">Current Month (March 2026)</option>
+                  <option value="Q1_2026">Q1 2026 (Jan - Mar)</option>
+                  <option value="FULL_YEAR">Full Fiscal Year 2025/2026</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="stats-grid" style="margin-bottom: 28px;">
+              <div class="stat-card">
+                <span class="stat-title">Catalog Asset Valuation</span>
+                <div class="stat-value" id="report-valuation-val">₦26,950,000</div>
+                <div class="stat-footer">Based on cost of current floor stock</div>
+              </div>
+              <div class="stat-card">
+                <span class="stat-title">Gross Settled Sales</span>
+                <div class="stat-value">₦14,280,000</div>
+                <div class="stat-footer">Net of VAT &amp; processor deductions</div>
+              </div>
+              <div class="stat-card">
+                <span class="stat-title">Average Order Value</span>
+                <div class="stat-value">₦4,760,000</div>
+                <div class="stat-footer">High-ticket cinema rental &amp; sales</div>
+              </div>
+            </div>
+
+            <div class="detail-grid-2">
+              <div class="detail-card">
+                <h4>Sales &amp; Revenue Reports</h4>
+                <p style="font-size: 12.5px; color: #8C7B75; margin-bottom: 16px;">Download detailed transaction manifests including customer identifiers, gateway transaction references, VAT breakdown, and line item lists.</p>
+                <div style="display: flex; gap: 10px;">
+                  <button class="button-gold" onclick="exportOrdersCSV()">Download Sales CSV</button>
+                  <button class="button-outline" onclick="exportOrdersJSON()">Download JSON</button>
+                </div>
+              </div>
+
+              <div class="detail-card">
+                <h4>Inventory &amp; Asset Valuation</h4>
+                <p style="font-size: 12.5px; color: #8C7B75; margin-bottom: 16px;">Export current stock quantities, SKU codes, pricing, category taxonomy, and low-stock reorder thresholds for warehouse stock-taking.</p>
+                <div style="display: flex; gap: 10px;">
+                  <button class="button-gold" onclick="exportInventoryCSV()">Download Inventory CSV</button>
+                  <button class="button-outline" onclick="exportInventoryJSON()">Download JSON</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             20. STORE SETTINGS PAGE
+        ============================================== -->
+        <section id="settings-view" class="admin-view">
+          <div class="admin-panel form-panel">
+            <div class="panel-header">
+              <h2>Store &amp; Portal Settings</h2>
+              <p class="subtitle">Global brand configuration, checkout policies, and administrative preferences.</p>
+            </div>
+            
+            <form id="store-settings-form" class="admin-form">
+              <h3 style="font-family:'Playfair Display', serif; font-size:18px; color:#FFE6A0; margin-top:10px;">Store Brand Identity</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="set-store-name">Store Name</label>
+                  <input type="text" id="set-store-name" value="CineMart Camera &amp; Film Co.">
+                </div>
+                <div class="form-group">
+                  <label for="set-store-email">Support Email</label>
+                  <input type="email" id="set-store-email" value="support@cinemart.ng">
+                </div>
+              </div>
+
+              <h3 style="font-family:'Playfair Display', serif; font-size:18px; color:#FFE6A0; margin-top:15px;">Regional &amp; Currency Policy</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="set-currency">Primary Currency</label>
+                  <input type="text" id="set-currency" value="Nigerian Naira (NGN - ₦)" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="set-vat-rate">Value Added Tax (VAT %)</label>
+                  <input type="text" id="set-vat-rate" value="7.5%">
+                </div>
+              </div>
+
+              <h3 style="font-family:'Playfair Display', serif; font-size:18px; color:#FFE6A0; margin-top:15px;">Fulfillment &amp; Dispatch Rules</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="set-free-shipping">Free Shipping Threshold (₦)</label>
+                  <input type="number" id="set-free-shipping" value="100000">
+                </div>
+                <div class="form-group">
+                  <label for="set-return-window">Return &amp; Warranty Window (Days)</label>
+                  <input type="number" id="set-return-window" value="14">
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="button-gold">Save Preferences</button>
+              </div>
+
+              <div id="settings-feedback-msg" class="feedback-msg"></div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- UNIVERSAL MODAL -->
+  <div class="admin-modal-overlay hidden" id="admin-modal-overlay">
+    <div class="admin-modal-card" id="admin-modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title">Administrative Dialogue</h3>
+        <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

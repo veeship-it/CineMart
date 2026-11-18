@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "CineMart",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

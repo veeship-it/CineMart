@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your CineMart shopping cart and complete payment through the Demo Bank Sandbox.">
+    <title>Shopping Cart &amp; Checkout | CineMart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* -----------------------------------------------------
+           CART PAGE DARK LUXURY STYLES (MATCHES MASTER THEME)
+        ----------------------------------------------------- */
+        .cart-page-wrap {
+            padding: 50px 7% 90px;
+            min-height: calc(100vh - 160px);
+            background:
+                radial-gradient(ellipse at 85% 15%, rgba(245, 181, 43, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 15% 70%, rgba(34, 34, 50, 0.4) 0%, transparent 50%),
+                var(--black, #070709);
+            color: var(--white, #FFFFFF);
+        }
+
+        .cart-page-header {
+            margin-bottom: 36px;
+        }
+
+        .cart-page-header .eyebrow {
+            color: var(--gold, #F5B52B);
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .cart-page-header h1 {
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: clamp(30px, 4.2vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            color: var(--white, #FFFFFF);
+            margin: 0;
+        }
+
+        .cart-page-header p {
+            margin-top: 8px;
+            color: var(--grey-light, #B6B6C8);
+            font-size: 14.5px;
+        }
+
+        /* Continue Shopping Button */
+        .continue-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 28px;
+            padding: 9px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-pill, 9999px);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--grey-light, #B6B6C8);
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition, 0.25s ease);
+            text-decoration: none;
+        }
+
+        .continue-link:hover {
+            border-color: var(--gold, #F5B52B);
+            color: var(--white, #FFFFFF);
+            background: rgba(245, 181, 43, 0.1);
+            transform: translateX(-3px);
+        }
+
+        /* Two-Column Layout */
+        .cart-two-col {
+            display: grid;
+            grid-template-columns: 1fr 390px;
+            gap: 36px;
+            align-items: start;
+        }
+
+        /* Cart Items List */
+        #cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            align-items: center;
+            gap: 24px;
+            padding: 20px 24px;
+            border-radius: var(--radius-lg, 18px);
+            background: linear-gradient(180deg, #13131D 0%, #0D0D14 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: all var(--transition, 0.25s ease);
+        }
+
+        .cart-item:hover {
+            border-color: rgba(245, 181, 43, 0.35);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .cart-item-image-wrap {
+            width: 120px;
+            height: 96px;
+            border-radius: var(--radius-md, 14px);
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #1E1E2C 0%, #0D0D14 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            flex-shrink: 0;
+        }
+
+        .cart-item-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+        }
+
+        .cart-item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .cart-item-category {
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 9.5px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold, #F5B52B);
+        }
+
+        .cart-item-name {
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white, #FFFFFF);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .cart-item-price-unit {
+            color: var(--grey-muted, #727286);
+            font-size: 13px;
+        }
+
+        .cart-item-controls-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .cart-stepper {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-pill, 9999px);
+            background: rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .cart-stepper button {
+            width: 32px;
+            height: 32px;
+            border: 0;
+            background: transparent;
+            color: var(--white, #FFFFFF);
+            font-size: 16px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: background var(--transition, 0.2s ease);
+        }
+
+        .cart-stepper button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--gold, #F5B52B);
+        }
+
+        .cart-stepper span {
+            min-width: 32px;
+            text-align: center;
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 13.5px;
+            font-weight: 800;
+            color: var(--white, #FFFFFF);
+        }
+
+        .cart-remove-button {
+            border: 0;
+            background: transparent;
+            color: var(--grey-muted, #727286);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: color var(--transition, 0.2s ease);
+        }
+
+        .cart-remove-button:hover {
+            color: #FF5A5A;
+            text-decoration: underline;
+        }
+
+        .cart-item-total-col {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .cart-item-total-label {
+            font-size: 9.5px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--grey-muted, #727286);
+            font-weight: 700;
+        }
+
+        .cart-item-total {
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--white, #FFFFFF);
+            white-space: nowrap;
+        }
+
+        /* Order Summary Card */
+        #cart-summary {
+            padding: 28px;
+            border-radius: var(--radius-xl, 24px);
+            background: linear-gradient(180deg, #151522 0%, #0F0F17 100%);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        #cart-summary h2 {
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--white, #FFFFFF);
+            margin: 0;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13.5px;
+            color: var(--grey-light, #B6B6C8);
+        }
+
+        .summary-row strong {
+            color: var(--white, #FFFFFF);
+            font-weight: 700;
+        }
+
+        .summary-row.discount-row {
+            color: #00D26A;
+        }
+
+        .summary-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4px;
+        }
+
+        .summary-total-row span {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white, #FFFFFF);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .summary-total-price {
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--gold, #F5B52B);
+            letter-spacing: -0.8px;
+            text-shadow: 0 0 20px rgba(245, 181, 43, 0.3);
+        }
+
+        /* Promo Coupon Box */
+        .promo-box {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .promo-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-sm, 10px);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--white, #FFFFFF);
+            font-size: 12.5px;
+            text-transform: uppercase;
+            outline: none;
+            transition: all var(--transition, 0.25s ease);
+        }
+
+        .promo-input:focus {
+            border-color: var(--gold, #F5B52B);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-apply-promo {
+            padding: 10px 16px;
+            border-radius: var(--radius-sm, 10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white, #FFFFFF);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition, 0.25s ease);
+            white-space: nowrap;
+        }
+
+        .btn-apply-promo:hover {
+            border-color: var(--gold, #F5B52B);
+            color: var(--gold-light, #FFE6A0);
+        }
+
+        .promo-feedback {
+            font-size: 11.5px;
+            margin-top: -6px;
+            display: none;
+        }
+
+        .promo-feedback.success {
+            display: block;
+            color: #00D26A;
+        }
+
+        .promo-feedback.error {
+            display: block;
+            color: #FF5A5A;
+        }
+
+        /* Checkout Action Button */
+        .checkout-button {
+            width: 100%;
+            min-height: 52px;
+            padding: 14px 24px;
+            border-radius: var(--radius-pill, 9999px);
+            font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all var(--transition, 0.25s ease);
+            background: linear-gradient(110deg, #FFC843 0%, #F5B52B 55%, #E69B14 100%);
+            color: #100B05;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(245, 181, 43, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .checkout-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(245, 181, 43, 0.6);
+            background: linear-gradient(110deg, #FFE6A0 0%, #FFC843 60%, #F5B52B 100%);
+        }
+
+        .checkout-button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Security Badges */
+        .checkout-trust-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 11.5px;
+            color: var(--grey-muted, #727286);
+        }
+
+        .checkout-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Empty Cart State */
+        .cart-empty-card {
+            padding: 80px 24px;
+            border-radius: var(--radius-xl, 24px);
+            background: rgba(18, 18, 26, 0.5);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cart-empty-card h3 {
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--white, #FFFFFF);
+            margin: 0;
+        }
+
+        .cart-empty-card p {
+            color: var(--grey-light, #B6B6C8);
+            max-width: 360px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        .checkout-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(4, 4, 7, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .checkout-modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .checkout-modal-dialog {
+            width: 100%;
+            max-width: 620px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: var(--radius-xl, 24px);
+            background: #111119;
+            border: 1px solid rgba(245, 181, 43, 0.35);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 181, 43, 0.18);
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.95) translateY(12px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .checkout-modal-overlay.open .checkout-modal-dialog {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Modal Header */
+        .checkout-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: #141420;
+        }
+
+        .modal-brand-tag {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-bank-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(245, 181, 43, 0.15);
+            border: 1px solid var(--gold, #F5B52B);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            color: var(--gold, #F5B52B);
+        }
+
+        .modal-header-text h3 {
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--white, #FFFFFF);
+            margin: 0;
+        }
+
+        .modal-header-text p {
+            font-size: 11px;
+            color: var(--gold-light, #FFE6A0);
+            letter-spacing: 0.5px;
+            margin: 2px 0 0;
+        }
+
+        .btn-modal-close {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white, #FFFFFF);
+            font-size: 18px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: all var(--transition, 0.2s ease);
+        }
+
+        .btn-modal-close:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--white, #FFFFFF);
+        }
+
+        /* Modal Body Steps */
+        .checkout-modal-body {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Step Progress */
+        .modal-steps-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--grey-muted, #727286);
+        }
+
+        .step-indicator.active {
+            color: var(--gold, #F5B52B);
+        }
+
+        .step-num {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: grid;
+            place-items: center;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .step-indicator.active .step-num {
+            background: var(--gold, #F5B52B);
+            color: #100B05;
+        }
+
+        .step-divider {
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Form Inputs */
+        .checkout-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .checkout-form-full {
+            grid-column: 1 / -1;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-field label {
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--grey-light, #B6B6C8);
+        }
+
+        .form-field input,
+        .form-field select {
+            padding: 11px 14px;
+            border-radius: var(--radius-sm, 10px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--white, #FFFFFF);
+            font-size: 13.5px;
+            font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+            outline: none;
+            transition: all var(--transition, 0.25s ease);
+        }
+
+        .form-field input:focus,
+        .form-field select:focus {
+            border-color: var(--gold, #F5B52B);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 16px rgba(245, 181, 43, 0.2);
+        }
+
+        .form-field select option {
+            background: #141420;
+            color: #FFFFFF;
+        }
+
+        /* Payment Tabs */
+        .bank-payment-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 4px;
+            border-radius: var(--radius-md, 12px);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .bank-tab-btn {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: var(--radius-sm, 10px);
+            border: 0;
+            background: transparent;
+            color: var(--grey-light, #B6B6C8);
+            font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all var(--transition, 0.2s ease);
+        }
+
+        .bank-tab-btn:hover {
+            color: var(--white, #FFFFFF);
+        }
+
+        .bank-tab-btn.active {
+            background: #1C1C2A;
+            color: var(--gold, #F5B52B);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(245, 181, 43, 0.25);
+        }
+
+        /* Virtual Account Info Box */
+        .demo-virtual-account-box {
+            padding: 20px;
+            border-radius: var(--radius-lg, 16px);
+            background: linear-gradient(145deg, #181826 0%, #101018 100%);
+            border: 1.5px solid rgba(245, 181, 43, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .account-badge-pill {
+            align-self: flex-start;
+            padding: 4px 10px;
+            border-radius: var(--radius-pill, 9999px);
+            background: rgba(245, 181, 43, 0.15);
+            color: var(--gold-light, #FFE6A0);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .virtual-acc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .virtual-acc-row:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .acc-label {
+            font-size: 12px;
+            color: var(--grey-muted, #727286);
+            font-weight: 600;
+        }
+
+        .acc-val-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .acc-val {
+            font-family: var(--font-display, 'Syne', sans-serif);
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--white, #FFFFFF);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-copy-acc {
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(245, 181, 43, 0.3);
+            background: rgba(245, 181, 43, 0.1);
+            color: var(--gold, #F5B52B);
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition, 0.2s ease);
+        }
+
+        .btn-copy-acc:hover {
+            background: var(--gold, #F5B52B);
+            color: #100B05;
+        }
+
+        /* Quick-fill Test Card Buttons */
+        .quick-cards-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-quick-fill {
+            padding: 6px 12px;
+            border-radius: var(--radius-pill, 9999px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--grey-light, #B6B6C8);
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition, 0.2s ease);
+        }
+
+        .btn-quick-fill:hover {
+            border-color: var(--gold, #F5B52B);
+            color: var(--gold, #F5B52B);
+            background: rgba(245, 181, 43, 0.1);
+        }
+
+        /* Processing Spinner State */
+        .modal-processing-state {
+            padding: 50px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .demo-bank-spinner {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid rgba(245, 181, 43, 0.18);
+            border-top-color: var(--gold, #F5B52B);
+            animation: spinBank 0.85s linear infinite;
+        }
+
+        @keyframes spinBank {
+            to { transform: rotate(360deg); }
+        }
+
+        .processing-logs {
+            font-family: monospace;
+            font-size: 12.5px;
+            color: var(--gold-light, #FFE6A0);
+            min-height: 24px;
+        }
+
+        /* Success & Receipt Card */
+        .modal-success-state {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            padding: 10px 0;
+        }
+
+        .success-icon-badge {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(0, 210, 106, 0.15);
+            border: 2px solid #00D26A;
+            display: grid;
+            place-items: center;
+            font-size: 32px;
+            color: #00D26A;
+            box-shadow: 0 0 35px rgba(0, 210, 106, 0.35);
+        }
+
+        .proforma-receipt-box {
+            width: 100%;
+            padding: 22px;
+            border-radius: var(--radius-lg, 16px);
+            background: #151522;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .receipt-id-tag {
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--gold, #F5B52B);
+            font-size: 14px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--grey-light, #B6B6C8);
+        }
+
+        .receipt-row strong {
+            color: var(--white, #FFFFFF);
+        }
+
+        .receipt-actions-row {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .receipt-actions-row button,
+        .receipt-actions-row a {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: var(--radius-pill, 9999px);
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all var(--transition, 0.25s ease);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .cart-two-col {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .cart-item {
+                grid-template-columns: 96px 1fr;
+                gap: 16px;
+                padding: 18px 20px;
+            }
+            .cart-item-total-col {
+                grid-column: 1 / -1;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                padding-top: 12px;
+                margin-top: 6px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .cart-page-wrap {
+                padding: 32px 4% 60px;
+            }
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                gap: 12px;
+                padding: 14px 16px;
+            }
+            .cart-item-image-wrap {
+                width: 80px;
+                height: 68px;
+            }
+            .cart-item-name {
+                font-size: 14px;
+            }
+            .checkout-modal-dialog {
+                max-width: 94vw;
+                border-radius: var(--radius-lg, 18px);
+            }
+            .checkout-modal-header {
+                padding: 16px 18px;
+            }
+            .checkout-modal-body {
+                padding: 18px;
+            }
+            .checkout-form-grid {
+                grid-template-columns: 1fr;
+            }
+            .bank-payment-tabs {
+                flex-direction: column;
+            }
+            .receipt-actions-row {
+                flex-direction: column;
+            }
+            .modal-steps-nav {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 12px;
+            }
+        }
+
+        /* Extra Small Phones (320px to 380px) */
+        @media (max-width: 380px) {
+            .cart-page-wrap {
+                padding: 24px 3% 50px;
+            }
+            .cart-item {
+                grid-template-columns: 70px 1fr;
+                gap: 10px;
+                padding: 12px 12px;
+            }
+            .cart-item-image-wrap {
+                width: 70px;
+                height: 60px;
+            }
+            .cart-item-name {
+                font-size: 13.5px;
+            }
+            .summary-total-price {
+                font-size: 22px;
+            }
+            #cart-summary {
+                padding: 20px 14px;
+            }
+            .promo-box {
+                flex-direction: column;
+            }
+            .btn-apply-promo {
+                width: 100%;
+            }
+            .checkout-modal-dialog {
+                max-width: 96vw;
+            }
+            .checkout-modal-header {
+                padding: 14px 14px;
+            }
+            .checkout-modal-body {
+                padding: 14px;
+            }
+        }
+
+        /* Large Desktop Screens (1441px and Above) */
+        @media (min-width: 1441px) {
+            .cart-page-wrap {
+                padding-left: calc((100% - 1360px) / 2);
+                padding-right: calc((100% - 1360px) / 2);
+            }
+        }
+
+        /* Printable Receipt Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .proforma-receipt-box,
+            .proforma-receipt-box * {
+                visibility: visible;
+            }
+            .proforma-receipt-box {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: #fff !important;
+                color: #000 !important;
+                border: 1px solid #ccc !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        FREE NATIONWIDE SHIPPING ON ORDERS OVER ₦100,000 &nbsp;·&nbsp; CINEMART EXCLUSIVE COLLECTION NOW LIVE
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header" id="main-header">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🎞️</span>
+            <div>
+                <span class="logo-wordmark">CINE<span class="brand-gradient">MART</span></span>
+                <span class="logo-tagline">YOUR VISION. OUR EQUIPMENT.</span>
+            </div>
+        </a>
+
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            <a href="product.html">Shop</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="girlcinemart.html" class="girl-link">GirlCineMart ♡</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-button" onclick="window.location.href='product.html'" aria-label="Search">⌕</button>
+            <a href="login.html" class="account-link">Account</a>
+            <a href="cart.html" class="cart-link" aria-current="page" aria-label="View cart">
+                Cart <span id="cart-count">0</span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <main class="cart-page-wrap">
+
+        <div class="cart-page-header">
+            <span class="eyebrow">YOUR CINEMA SELECTION</span>
+            <h1>Shopping Cart &amp; Checkout</h1>
+            <p>Review your chosen creative gear and complete order fulfillment via our secure Demo Bank gateway.</p>
+        </div>
+
+        <a href="product.html" class="continue-link">← Continue Shopping</a>
+
+        <div class="cart-two-col">
+
+            <!-- Cart Items Container -->
+            <div id="cart-items" aria-live="polite">
+                <!-- Dynamically rendered by cart.js -->
+            </div>
+
+            <!-- Order Summary Sidebar -->
+            <div id="cart-summary" style="position: sticky; top: 100px;">
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Equipment Subtotal:</span>
+                    <strong id="cart-subtotal">₦0.00</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Nationwide Delivery:</span>
+                    <strong id="cart-shipping-fee">FREE</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Value Added Tax (7.5%):</span>
+                    <strong id="cart-tax">₦0.00</strong>
+                </div>
+
+                <div class="summary-row discount-row" id="discount-row" style="display: none;">
+                    <span>Promotional Discount:</span>
+                    <strong id="cart-discount">-₦0.00</strong>
+                </div>
+
+                <!-- Promo Coupon -->
+                <div class="promo-box">
+                    <input type="text" id="promo-code-input" class="promo-input" placeholder="Promo code (e.g. CINEMARTVIP)">
+                    <button type="button" id="btn-apply-promo" class="btn-apply-promo">Apply</button>
+                </div>
+                <div id="promo-feedback-msg" class="promo-feedback"></div>
+
+                <div class="summary-total-row">
+                    <span>Total Amount:</span>
+                    <span class="summary-total-price" id="cart-total">₦0.00</span>
+                </div>
+
+                <!-- Checkout CTA -->
+                <button id="checkout-button" type="button" class="checkout-button" disabled>
+                    <span>Proceed to Checkout</span>
+                    <span>→</span>
+                </button>
+
+                <!-- Trust Strip -->
+                <div class="checkout-trust-strip">
+                    <div class="checkout-trust-item">
+                        <span>🔒</span>
+                        <span>256-Bit SSL Demo Bank Encryption</span>
+                    </div>
+                    <div class="checkout-trust-item">
+                        <span>⚡</span>
+                        <span>Instant Sandbox Bank Settlement</span>
+                    </div>
+                    <div class="checkout-trust-item">
+                        <span>🛡️</span>
+                        <span>Official 1-Year CineMart Equipment Warranty</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- =====================================================
+         DEMO BANK CHECKOUT MODAL (INTERACTIVE PAYMENT GATEWAY)
+    ===================================================== -->
+    <div id="checkout-modal" class="checkout-modal-overlay" aria-hidden="true" role="dialog">
+        <div class="checkout-modal-dialog">
+
+            <!-- Modal Header -->
+            <div class="checkout-modal-header">
+                <div class="modal-brand-tag">
+                    <div class="modal-bank-icon">🏦</div>
+                    <div class="modal-header-text">
+                        <h3>CineMart Demo Commercial Bank</h3>
+                        <p>SANDBOX PAYMENT GATEWAY · INSTANT SETTLEMENT</p>
+                    </div>
+                </div>
+                <button type="button" id="btn-close-modal" class="btn-modal-close" aria-label="Close checkout">&times;</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="checkout-modal-body">
+
+                <!-- Step Tabs Bar -->
+                <div class="modal-steps-nav">
+                    <div class="step-indicator active" id="step-nav-1">
+                        <span class="step-num">1</span>
+                        <span>Delivery</span>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="step-indicator" id="step-nav-2">
+                        <span class="step-num">2</span>
+                        <span>Demo Payment</span>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="step-indicator" id="step-nav-3">
+                        <span class="step-num">3</span>
+                        <span>Confirmation</span>
+                    </div>
+                </div>
+
+                <!-- ==============================================
+                     STEP 1: CUSTOMER & DELIVERY ADDRESS FORM
+                ============================================== -->
+                <div id="checkout-step-1" class="checkout-step-panel">
+                    <form id="delivery-info-form" onsubmit="event.preventDefault(); goToPaymentStep();">
+                        <div class="checkout-form-grid">
+                            <div class="form-field">
+                                <label for="cust-fullname">Full Name *</label>
+                                <input type="text" id="cust-fullname" required placeholder="e.g. Babatunde Alabi">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="cust-phone">Phone Number *</label>
+                                <input type="tel" id="cust-phone" required placeholder="+234 803 000 0000">
+                            </div>
+
+                            <div class="form-field checkout-form-full">
+                                <label for="cust-email">Email Address *</label>
+                                <input type="email" id="cust-email" required placeholder="director@filmstudio.ng">
+                            </div>
+
+                            <div class="form-field checkout-form-full">
+                                <label for="cust-address">Street Address *</label>
+                                <input type="text" id="cust-address" required placeholder="e.g. 14 Admiralty Way, Lekki Phase 1">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="cust-city">City / Region *</label>
+                                <input type="text" id="cust-city" required placeholder="e.g. Lagos Island">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="cust-delivery-speed">Shipping Method</label>
+                                <select id="cust-delivery-speed">
+                                    <option value="STANDARD">Standard Insured Courier (FREE)</option>
+                                    <option value="EXPRESS">VIP Priority Same-Day Dispatch (+₦15,000)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 12px;">
+                            <button type="button" class="btn-modal-close" style="width: auto; border-radius: 30px; padding: 10px 20px; font-size: 13px;" onclick="closeCheckoutModal()">Cancel</button>
+                            <button type="submit" class="button button-gold" style="min-height: 46px; padding: 10px 28px;">
+                                Continue to Demo Bank Payment →
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- ==============================================
+                     STEP 2: DEMO BANK PAYMENT METHODS
+                ============================================== -->
+                <div id="checkout-step-2" class="checkout-step-panel" style="display: none;">
+
+                    <!-- Payment Method Tabs -->
+                    <div class="bank-payment-tabs">
+                        <button type="button" class="bank-tab-btn active" data-method="TRANSFER">
+                            <span>🏦 Bank Transfer</span>
+                        </button>
+                        <button type="button" class="bank-tab-btn" data-method="CARD">
+                            <span>💳 Demo Card</span>
+                        </button>
+                        <button type="button" class="bank-tab-btn" data-method="USSD">
+                            <span>⚡ USSD</span>
+                        </button>
+                    </div>
+
+                    <!-- TAB A: DEMO BANK TRANSFER -->
+                    <div id="method-transfer-box" class="bank-method-content">
+                        <div class="demo-virtual-account-box">
+                            <span class="account-badge-pill">● CINEMART DYNAMIC DEMO ACCOUNT</span>
+
+                            <div class="virtual-acc-row">
+                                <span class="acc-label">Bank Name</span>
+                                <strong class="acc-val" style="font-size: 14.5px;">CineMart Demo Commercial Bank (Providus Sandbox)</strong>
+                            </div>
+
+                            <div class="virtual-acc-row">
+                                <span class="acc-label">Account Number</span>
+                                <div class="acc-val-wrap">
+                                    <span class="acc-val" id="demo-acc-number">9948201943</span>
+                                    <button type="button" class="btn-copy-acc" onclick="copyDemoAccount()">Copy</button>
+                                </div>
+                            </div>
+
+                            <div class="virtual-acc-row">
+                                <span class="acc-label">Account Name</span>
+                                <span class="acc-val" style="font-size: 14px;">CineMart Cinema Equipment Co. (Sandbox)</span>
+                            </div>
+
+                            <div class="virtual-acc-row">
+                                <span class="acc-label">Amount Payable</span>
+                                <span class="acc-val" id="modal-payable-amount" style="color: var(--gold, #F5B52B);">₦0.00</span>
+                            </div>
+
+                            <div class="virtual-acc-row">
+                                <span class="acc-label">Payment Ref</span>
+                                <span class="acc-val" id="demo-tx-ref" style="font-size: 13px; font-family: monospace;">CM-TX-882914</span>
+                            </div>
+                        </div>
+
+                        <p style="font-size: 12px; color: var(--grey-muted, #727286); margin-top: 12px; text-align: center;">
+                            Use your mobile banking app or simulate an instant transfer below. Sandbox payments are verified in real time.
+                        </p>
+
+                        <div style="margin-top: 18px; display: flex; gap: 10px;">
+                            <button type="button" class="btn-modal-close" style="width: auto; border-radius: 30px; padding: 10px 18px; font-size: 13px;" onclick="goToStep(1)">← Back</button>
+                            <button type="button" class="button button-gold" style="flex: 1; min-height: 48px;" onclick="simulateDemoBankVerification('Demo Bank Transfer')">
+                                I Have Sent Payment (Simulate Bank Credit) ⚡
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TAB B: DEMO CARD -->
+                    <div id="method-card-box" class="bank-method-content" style="display: none;">
+                        <div class="quick-cards-row">
+                            <span style="font-size: 11px; color: var(--grey-muted); display: flex; align-items: center;">Quick Test Cards:</span>
+                            <button type="button" class="btn-quick-fill" onclick="fillTestCard('VISA')">⚡ Autofill Test Visa (Success)</button>
+                            <button type="button" class="btn-quick-fill" onclick="fillTestCard('MASTERCARD')">⚡ Autofill Test Mastercard</button>
+                        </div>
+
+                        <form id="demo-card-form" style="margin-top: 14px;" onsubmit="event.preventDefault(); simulateDemoCardOtp();">
+                            <div class="checkout-form-grid">
+                                <div class="form-field checkout-form-full">
+                                    <label for="card-num">Card Number</label>
+                                    <input type="text" id="card-num" required placeholder="4084 0000 0000 4242" maxlength="19">
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="card-expiry">Expiry Date</label>
+                                    <input type="text" id="card-expiry" required placeholder="MM/YY" maxlength="5">
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="card-cvv">CVV</label>
+                                    <input type="password" id="card-cvv" required placeholder="123" maxlength="3">
+                                </div>
+
+                                <div class="form-field checkout-form-full">
+                                    <label for="card-holder">Cardholder Name</label>
+                                    <input type="text" id="card-holder" required placeholder="e.g. Babatunde Alabi">
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                                <button type="button" class="btn-modal-close" style="width: auto; border-radius: 30px; padding: 10px 18px; font-size: 13px;" onclick="goToStep(1)">← Back</button>
+                                <button type="submit" class="button button-gold" style="flex: 1; min-height: 48px;">
+                                    Authorize Payment with Demo Card 🔒
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- TAB C: DEMO USSD -->
+                    <div id="method-ussd-box" class="bank-method-content" style="display: none;">
+                        <div class="demo-virtual-account-box">
+                            <div class="form-field">
+                                <label for="ussd-bank-select">Select Demo Bank</label>
+                                <select id="ussd-bank-select" onchange="updateUssdString()">
+                                    <option value="GTBank">Guaranty Trust Bank (*737#)</option>
+                                    <option value="Access">Access Bank (*901#)</option>
+                                    <option value="Zenith">Zenith Bank (*966#)</option>
+                                    <option value="FirstBank">First Bank of Nigeria (*894#)</option>
+                                    <option value="UBA">United Bank for Africa (*919#)</option>
+                                </select>
+                            </div>
+
+                            <div style="text-align: center; padding: 16px; background: rgba(0,0,0,0.3); border-radius: 10px;">
+                                <span style="font-size: 11.5px; color: var(--grey-muted);">Dial this code on your mobile phone:</span>
+                                <div id="ussd-code-display" style="font-family: monospace; font-size: 20px; font-weight: 800; color: var(--gold, #F5B52B); margin-top: 6px;">
+                                    *737*000*8829#
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 18px; display: flex; gap: 10px;">
+                            <button type="button" class="btn-modal-close" style="width: auto; border-radius: 30px; padding: 10px 18px; font-size: 13px;" onclick="goToStep(1)">← Back</button>
+                            <button type="button" class="button button-gold" style="flex: 1; min-height: 48px;" onclick="simulateDemoBankVerification('Demo USSD Payment')">
+                                Simulate USSD Approval ⚡
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ==============================================
+                     STEP 2.5: OTP 3D-SECURE SIMULATION
+                ============================================== -->
+                <div id="checkout-otp-step" class="checkout-step-panel" style="display: none;">
+                    <div style="padding: 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                        <div style="font-size: 32px;">🔐</div>
+                        <h4 style="font-family: var(--font-display); font-size: 18px; color: #fff; margin: 0;">Demo Bank 3D-Secure Authentication</h4>
+                        <p style="font-size: 13px; color: var(--grey-light); max-width: 380px;">
+                            A one-time simulation passcode has been sent to client phone number. For this sandbox test, use code <strong>123456</strong>.
+                        </p>
+
+                        <input type="text" id="demo-otp-input" value="123456" maxlength="6" style="padding: 12px; font-size: 22px; letter-spacing: 6px; text-align: center; width: 180px; border-radius: 10px; border: 1.5px solid var(--gold); background: #1C1C2A; color: #fff; outline: none;">
+
+                        <div style="display: flex; gap: 10px; width: 100%; margin-top: 8px;">
+                            <button type="button" class="btn-modal-close" style="width: auto; border-radius: 30px; padding: 10px 18px; font-size: 13px;" onclick="goToStep(2)">Cancel</button>
+                            <button type="button" class="button button-gold" style="flex: 1; min-height: 48px;" onclick="simulateDemoBankVerification('Demo Card (3D-Secure)')">
+                                Authorize Transaction 🔒
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==============================================
+                     STEP 3: PROCESSING / SETTLEMENT ANIMATION
+                ============================================== -->
+                <div id="checkout-step-3" class="checkout-step-panel" style="display: none;">
+                    <div class="modal-processing-state">
+                        <div class="demo-bank-spinner"></div>
+                        <h4 style="font-family: var(--font-display); font-size: 18px; color: #fff; margin: 0;">Securing Demo Settlement...</h4>
+                        <div class="processing-logs" id="processing-logs-text">
+                            Initiating interbank settlement switch...
+                        </div>
+                        <p style="font-size: 12px; color: var(--grey-muted);">Please do not refresh or close this browser window.</p>
+                    </div>
+                </div>
+
+                <!-- ==============================================
+                     STEP 4: CONFIRMATION & OFFICIAL RECEIPT
+                ============================================== -->
+                <div id="checkout-step-4" class="checkout-step-panel" style="display: none;">
+                    <div class="modal-success-state">
+                        <div class="success-icon-badge">✓</div>
+                        <h3 style="font-family: var(--font-display); font-size: 22px; color: #fff; margin: 0;">Payment Approved by Demo Bank!</h3>
+                        <p style="font-size: 13.5px; color: var(--grey-light); margin: 0;">
+                            Your equipment order has been confirmed and registered in the CineMart fulfillment pipeline.
+                        </p>
+
+                        <div class="proforma-receipt-box" id="order-receipt-content">
+                            <!-- Populated dynamically by cart.js -->
+                        </div>
+
+                        <div class="receipt-actions-row">
+                            <button type="button" class="button button-outline" onclick="printReceipt()">
+                                🖨️ Print Proforma Receipt
+                            </button>
+                            <a href="admin.html" class="button button-outline" style="border-color: rgba(245, 181, 43, 0.4); color: var(--gold-light);">
+                                ⚙️ View in Admin Portal
+                            </a>
+                            <a href="product.html" class="button button-gold">
+                                Continue Shopping →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <span class="logo-icon">🎞️</span>
+                    <div>
+                        <span class="logo-wordmark">CINE<span class="brand-gradient">MART</span></span>
+                        <span class="logo-tagline">YOUR VISION. OUR EQUIPMENT.</span>
+                    </div>
+                </a>
+                <p>Equipping filmmakers, content creators, and visual storytellers with industry-grade equipment and creative instruments.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore Store</h3>
+                <a href="product.html">All Equipment</a>
+                <a href="product.html?category=CAMERAS">Cinema Cameras</a>
+                <a href="product.html?category=LENSES">Lenses &amp; Optics</a>
+                <a href="girlcinemart.html">GirlCineMart Collection ♡</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <a href="cart.html">View Cart</a>
+                <a href="login.html">Account &amp; Orders</a>
+                <a href="index.html#faq">Shipping &amp; Returns</a>
+                <a href="mailto:support@cinemart.com">Equipment Advice</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Stay Connected</h3>
+                <p>Join thousands of Nigerian filmmakers creating world-class cinema.</p>
+                <a href="mailto:hello@cinemart.example">Contact Sales</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2026</span> CineMart Cinema Equipment Co. All rights reserved.</p>
+            <a href="admin-login.html" style="color: rgba(255,249,239,0.35); font-size: 11px; text-decoration: none;">Executive Portal</a>
+            <p>Made for the love of creativity. ♡</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="site.js"></script>
+    <script type="module" src="cart.js"></script>
+</body>
+</html>

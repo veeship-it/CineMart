@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineMart — Executive Portal Login</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-login-body">
+
+  <div class="admin-login-wrapper">
+    <div class="admin-login-card">
+      <div class="login-brand">
+        <div class="logo">
+          CINEMART
+          <small>EXECUTIVE PORTAL</small>
+        </div>
+        <p class="login-subtitle">Restricted access for authorized cinematography managers only.</p>
+      </div>
+
+      <form id="admin-login-form" class="admin-form" novalidate>
+        <div class="form-group">
+          <label for="admin-email">Admin Email Address *</label>
+          <input type="email" id="admin-email" required placeholder="admin@cinemart.ng" autocomplete="email" value="admin@cinemart.ng">
+        </div>
+
+        <div class="form-group">
+          <div class="label-with-action">
+            <label for="admin-password">Password *</label>
+            <button type="button" class="btn-text-gold" id="toggle-password-btn">Show</button>
+          </div>
+          <input type="password" id="admin-password" required placeholder="••••••••" autocomplete="current-password" value="cinemart2026">
+        </div>
+
+        <div class="form-row-between">
+          <div class="form-checkbox">
+            <input type="checkbox" id="remember-me" checked>
+            <label for="remember-me">Remember Session</label>
+          </div>
+          <button type="button" class="btn-link-gold" id="forgot-password-btn" onclick="alert('Password reset instructions have been dispatched to the designated systems administrator.')">Forgot Password?</button>
+        </div>
+
+        <button type="submit" class="button button-gold w-100" id="login-submit-btn">
+          <span>Authenticate Portal</span>
+        </button>
+
+        <div id="login-feedback-msg" class="feedback-msg"></div>
+      </form>
+
+      <div class="login-footer">
+        <a href="index.html">← Return to CineMart Storefront</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('admin-login-form');
+      const passInput = document.getElementById('admin-password');
+      const toggleBtn = document.getElementById('toggle-password-btn');
+      const feedback = document.getElementById('login-feedback-msg');
+      const submitBtn = document.getElementById('login-submit-btn');
+
+      // Password visibility toggle
+      toggleBtn.addEventListener('click', () => {
+        const isPass = passInput.type === 'password';
+        passInput.type = isPass ? 'text' : 'password';
+        toggleBtn.textContent = isPass ? 'Hide' : 'Show';
+      });
+
+      // Login form submission handler
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('admin-email').value.trim();
+        const password = passInput.value;
+
+        if (!email || !password) {
+          showFeedback('Please provide both admin email and password.', 'error');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Authenticating...</span>';
+        showFeedback('Validating credentials with CineMart Security Gateway...', 'info');
+        
+        setTimeout(() => {
+          showFeedback('Authentication Successful. Redirecting to Executive Console...', 'success');
+          setTimeout(() => {
+            window.location.href = 'admin.html';
+          }, 800);
+        }, 900);
+      });
+
+      function showFeedback(msg, type) {
+        feedback.textContent = msg;
+        feedback.className = `feedback-msg ${type}`;
+      }
+    });
+  </script>
+</body>
+</html>
+
